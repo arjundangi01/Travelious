@@ -5,7 +5,7 @@ import Login from "../Pages/Login Page/login";
 import Signup from "../Pages/Login Page/signup";
 import Tour from "../Pages/Tour Page/tour";
 import TourDetail from "../Pages/Detail Page/tourDetail";
-import PaymentConfirm from "../Pages/Payment Page/paymentConfirm";
+import PaymentConfirm from "../Pages/Payment Page/thankYou";
 import Payment from "../Pages/Payment Page/payment";
 import Profile from "../Pages/Profile and History/Profile";
 import ProfilePrivateRoute from "./profilePrivateRoute"

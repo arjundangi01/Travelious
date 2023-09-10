@@ -1,8 +1,8 @@
 import React from 'react'
-
+import style from "./payment.module.css"
 const Payment = () => {
   return (
-    <div>Payment</div>
+    <div className={style.container} >Payment</div>
   )
 }
 
