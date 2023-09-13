@@ -34,12 +34,14 @@
     height: 33.5px;
     border: none;
     border-radius: 15px;
-    background-color: orange;
+    background-color: rgb(249,107,45);
+    color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .topCover .searchBtn:hover{
-    color: white;
-    cursor: pointer;   
+    color: black;
+    cursor: pointer;
+    font-weight: bold;   
 }
 
 .tourCards{
@@ -57,6 +59,12 @@
     /* border: 1px solid red; */
     
 }
+.isLoading{
+    display: flex;
+    justify-content: center;
+    font-family: cursive;
+}
+
 
 /* single image card */
 
@@ -125,6 +133,77 @@
 .tourCards > .destinationTitle .title{
     font-family:cursive;
     font-weight: bold;
+}
+
+.singleCard  hr{
+    margin-top: -5px;
+}
+.singleCard  hr+p{
+    padding: 10px;
+    margin-top: -18px;
+}
+
+.singleCard > div  > .priceDiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    /* border: 1px solid red; */
+    /* align-items: center; */
+    margin-top: -25px;
+}
+.singleCard > div  > .priceDiv p{
+    font-size: 18px;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.singleCard > div  > .priceDiv button{
+    width: 170px;
+    font-size: 14px;
+    font-weight: bold;
+    height: 32px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(249,107,45);
+    color: white;
+}
+.singleCard > div  > .priceDiv  .arrowBtn{
+    font-size: 20px;
+    margin-top: -2px;
+}
+.singleCard > div  > .priceDiv button:hover{
+    cursor: pointer;
+    color: black;
+}
+.singleCard > div .perPerson{
+    font-size: 12px;
+    padding-left: 10px;
+    margin-top: -20px;
+}
+
+.tourCards > .nextBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px; 
+    gap: 10px; 
+}
+.tourCards > .nextBtn  span{
+   font-family:Georgia, 'Times New Roman', Times, serif ;
+   font-size: 22px;
+}
+.tourCards > .nextBtn > button{
+    width: 100px;
+    font-family: cursive;
+    font-size: 18px;
+    border: none;
+    background-color: plum;
+    color: black;
+    
+}
+.tourCards > .nextBtn > button:hover{
+    background-color: black;
+    color: white;
 }
 
  

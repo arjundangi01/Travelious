@@ -8,10 +8,10 @@ export const ADD_TOUR_FAILURE = "ADD_TOUR_FAILURE"
 
 //Add tour
 
-export const addTour =() => async (dispatch) => {
+export const addTour =(render) => async (dispatch) => {
     try {
         dispatch({type : ADD_TOUR_REQUEST})
-        const res = await axios.get("https://fair-teal-worm-gown.cyclic.cloud/tours")
+        const res = await axios.get(`https://fair-teal-worm-gown.cyclic.cloud/tours?_limit=12&_page=${render}`)
         const data = res.data
         // console.log(data);
         dispatch({type : ADD_TOUR_SUCCESS,payload : data})

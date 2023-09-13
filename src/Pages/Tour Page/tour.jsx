@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useDispatch,useSelector} from "react-redux"
 import { addTour } from '../../Redux/Tour Data/action';
 import styles from "./tour.module.css"
@@ -8,17 +8,33 @@ import {PiBinocularsFill} from "react-icons/pi"
 import {AiFillCar} from "react-icons/ai"
 import {GiMeal} from "react-icons/gi"
 import {AiTwotoneStar} from "react-icons/ai"
-
+import {HiArrowNarrowRight } from "react-icons/hi"
+import {HiArrowNarrowLeft} from "react-icons/hi"
 const Tour = () => {
+  const[render,setRender] = useState(1)
 
   const dispatch = useDispatch();
   
   const tourData = useSelector((store) => store.tourReducer.tours)
-  console.log(tourData);
+  // console.log(tourData);
+
+  const loading = useSelector((store) => store.tourReducer.isLoading)
+  console.log(loading);
 
   useEffect(() => {
-    dispatch(addTour())
+    dispatch(addTour(render))
   },[dispatch])
+
+
+
+  function handleNext() {
+    setRender(prev => prev + 1)
+    dispatch(addTour(render + 1)) // Pass the updated render value
+  }
+  function handlePrev(){
+    setRender(prev => prev - 1)
+    dispatch(addTour(render - 1))
+  }
 
 
 
@@ -45,6 +61,14 @@ const Tour = () => {
       <div className={styles.tourCards}>
 
 
+        {/* is Loading */}
+        <div className={styles.isLoading}>
+            {
+              loading?<h1>Loading...</h1>:""
+            }
+        </div>
+
+
         {/* title card */}
 
         <div className={styles.destinationTitle}>
@@ -53,12 +77,14 @@ const Tour = () => {
           <p>Trevelious is a captivating travel website that serves as a virtual passport to the world's most enchanting destinations. With each entry, readers embark on a journey filled with vivid storytelling and immersive experiences. The blog's author, a seasoned globetrotter, shares their personal encounters, offering unique insights, hidden gems, and cultural revelations from various corners of the globe. Join us on this journey of discovery and exploration through "Destination Diaries," where each post is an invitation to unlock the beauty and mystery of the world, one destination at a time.!</p>
 
         </div>
+
        
+        {/* single card */}
 
           <div className={styles.singleCard}>
             {
               tourData?.map((ele) => (
-                <div>
+                <div key={ele.id}>
                     <img src={ele.url} alt="" />
                     
                     <div className={styles.nameDiv}>
@@ -76,14 +102,33 @@ const Tour = () => {
                       <h6 >Hotel Included </h6>
                       <span>Rate: 4.5<AiTwotoneStar className={styles.rating}/></span>
                     </div>
-                    
+                    <hr />
+                    <p>starting from</p>
 
+                    {/* price div */}
+                    <div className={styles.priceDiv}>
+
+                      <p>₹ {ele.cost}</p>
+                      <button>Customize & Book <HiArrowNarrowRight className={styles.arrowBtn}/> 
+                      </button>
+
+                    </div>
+                    <p className={styles.perPerson}>per person on twin sharing</p>
+                    
                 </div>
               ))
 
             }
 
           </div>
+
+          <div  className={styles.nextBtn}>
+            <button onClick={handlePrev}><HiArrowNarrowLeft className={styles.arrowBtn}/> Pre</button>
+            <span>{render}</span>
+             <button onClick={handleNext}>Next <HiArrowNarrowRight className={styles.arrowBtn}/></button>
+          </div>
+
+          
 
         </div>
 
