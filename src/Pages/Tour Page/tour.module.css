@@ -59,6 +59,34 @@
     /* border: 1px solid red; */
     
 }
+
+/* media queries */
+
+@media (max-width : 500px){
+    .singleCard{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .mainCard > .topCover > p{
+        font-size: 1.8rem;
+    }
+    .topCover  .input{
+        width:300px ;
+    }
+    .topCover > .location{
+        /* color: red; */
+        margin-left: -23rem;
+        margin-top: -4rem;
+    }
+    
+}
+
+@media only screen and (max-width : 840px) and (min-width: 500px){
+    .singleCard{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+
 .isLoading{
     display: flex;
     justify-content: center;
