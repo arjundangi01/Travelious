@@ -1,0 +1,15 @@
+.container{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 1rem;
+}
+
+.heading_div{
+    color: orange;
+    border-bottom: 3px solid orange;
+}
+.empty_div{
+    padding: 1rem;
+    text-align: center;
+    color: rgb(255, 81, 0);
+
+}

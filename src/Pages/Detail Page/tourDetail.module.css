@@ -1,0 +1,40 @@
+.parent {
+  /* background-color: aliceblue; */
+}
+.banner_section {
+  width: 80%;
+  margin: auto;
+  margin-top: 1rem;
+}
+.detail_section {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+.detail_section > div:first-child {
+  width: 60%;
+}
+
+
+.inc_exc_section {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.options_section {
+  width: 70%;
+  margin: auto;
+}
+.options_div {
+  display: flex;
+  gap: 2rem;
+  cursor: pointer;
+}
+.option {
+  color: #e76d17;
+  border-bottom: 2px solid #e76d17;
+}

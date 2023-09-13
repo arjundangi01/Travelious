@@ -4,6 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
+/Home Page
+/Login Page
+/Payment Page
+/Tour Page
 
 # testing
 /coverage

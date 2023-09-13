@@ -1,0 +1,14 @@
+.container {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 3rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+.container > div:first-child {
+  font-size: 6rem;
+  color: orange;
+  display: flex;
+  align-items: flex-start;
+  /* border: 1px solid #000; */
+}
