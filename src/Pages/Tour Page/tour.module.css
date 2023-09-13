@@ -43,14 +43,18 @@
 }
 
 .tourCards{
+    
     width: 80%;
-    margin: auto;  
+    margin: auto; 
+    /* border: 1px solid black;  */
+    margin-top: 200px;
+    
 }
 .singleCard{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 25px;
-    margin-top: 300px;
+    /* border: 1px solid red; */
     
 }
 
@@ -114,6 +118,13 @@
 .singleCard > div  .rating{
    font-size: 21px;
    margin-top: -3px;   
+}
+.tourCards > .destinationTitle{
+    padding: 10px;
+}
+.tourCards > .destinationTitle .title{
+    font-family:cursive;
+    font-weight: bold;
 }
 
  

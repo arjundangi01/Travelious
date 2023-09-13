@@ -26,17 +26,34 @@ const Tour = () => {
     <div>
     {/* <h1>Tour Page</h1> */}
     <div className={styles.mainCard}>
+
+      {/* top cover */}
+
       <div className={styles.topCover}>
-        <img src="https://images.unsplash.com/photo-1598192743377-72736e228eb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1842&q=80"  alt="landscape img" />
-        <p>Find Popular Destination</p>
-        <div>
-          <input className={styles.input} type="text" placeholder='search destination'/>
-          <button className={styles.searchBtn}>SEARCH</button>
+          <img src="https://images.unsplash.com/photo-1598192743377-72736e228eb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1842&q=80"  alt="landscape img" />
+          <p>Find Popular Destination</p>
+          <div>
+            <input className={styles.input} type="text" placeholder='search destination'/>
+            <button className={styles.searchBtn}>SEARCH</button>
+          </div>
+          <SlLocationPin type='icon' className={styles.location}/>
+         
+      </div>
+
+       {/* tour cards */}
+       
+      <div className={styles.tourCards}>
+
+
+        {/* title card */}
+
+        <div className={styles.destinationTitle}>
+
+          <h5 className={styles.title}>A Journey to Remember!</h5>
+          <p>Trevelious is a captivating travel website that serves as a virtual passport to the world's most enchanting destinations. With each entry, readers embark on a journey filled with vivid storytelling and immersive experiences. The blog's author, a seasoned globetrotter, shares their personal encounters, offering unique insights, hidden gems, and cultural revelations from various corners of the globe. Join us on this journey of discovery and exploration through "Destination Diaries," where each post is an invitation to unlock the beauty and mystery of the world, one destination at a time.!</p>
+
         </div>
-        <SlLocationPin type='icon' className={styles.location}/>
-        
-        {/* tour cards */}
-        <div className={styles.tourCards}>
+       
 
           <div className={styles.singleCard}>
             {
@@ -69,10 +86,6 @@ const Tour = () => {
           </div>
 
         </div>
-        
-        
-        
-      </div>
 
     </div>
 
