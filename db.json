@@ -408,6 +408,53 @@
       "guestDetail": "4 guests2-bedrooms2-beds2-bathrooms",
       "description1": "The Dome is a one bedroom bamboo villa built on two floors. Its ground floor houses an open air living room fitted with a dining area, a seating area and balinese style hammock.The living room has direct access to a spacious balinese style garden and the beautiful Santorini style infinity pool.Amenities in the living room include a projector with Netflix, Nespresso coffee machine and refrigerated minibar.The master bedroom on the upper floor is fitted with a king size bed, a walk-in wardrobe, air conditioning, an in-room bathtub from where our guests can enjoy the beautiful rice fields views and a balcony overlooking the famous volcano Mount Agung. The bedroom houses a modernly equipped bathroom."
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": 2,
+      "username": "carlos",
+      "password": "12345"
+    },
+    {
+      "username": "sheeeesh",
+      "email": "sheeesh@pro.com",
+      "password": "sheeeesh",
+      "id": 3
+    },
+    {
+      "username": "asd",
+      "email": "asd@asd.com",
+      "password": "asdasdasd",
+      "id": 4
+    },
+    {
+      "username": "as",
+      "email": "asdasd@asd.com",
+      "password": "adasasdadadasd",
+      "id": 5
+    },
+    {
+      "username": "admin",
+      "email": "nitishkumar2809@gmail.com",
+      "password": "admin",
+      "id": 6
+    },
+    {
+      "username": "admin",
+      "email": "nitishkumar2809@gmail.com",
+      "password": "admin",
+      "id": 7
+    },
+    {
+      "username": "admin",
+      "email": "nitishkumar2809@gmail.com",
+      "password": "12345",
+      "id": 8
+    }
   ]
-  
 }
