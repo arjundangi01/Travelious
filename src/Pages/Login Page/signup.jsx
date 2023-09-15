@@ -12,7 +12,7 @@ export const SignUp = () => {
   const navigate = useNavigate();
 
   const containerStyle = {
-    backgroundColor: '#185e49',
+    // backgroundColor: '#185e49',
     fontFamily: 'fjalla One, sans-serif',
     display: 'flex',
     alignItems: 'center',
@@ -81,7 +81,7 @@ export const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signUp();
-    navigate("/");
+    navigate("/Login");
   };
   
   const signUp = () => {

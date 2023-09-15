@@ -5,10 +5,11 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { handleLogin } from '../../Redux/action';
 import { useToast } from '@chakra-ui/react';
+// import "./login.module.css";
 
 export const Login = () => {
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -49,8 +50,8 @@ export const Login = () => {
   };
 
 
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
   }
 
   const handlePassword = (e) => {
@@ -60,7 +61,7 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.get(`http://localhost:8080/users?username=${username}&password=${password}`)
+    axios.get(`http://localhost:8080/users?email=${email}&password=${password}`)
       .then((response) => {
         if (response.data.length === 1) {
           dispatch(handleLogin());
@@ -91,7 +92,7 @@ export const Login = () => {
   return (
     <div
       style={{
-        backgroundColor: '#185e49',
+        // backgroundColor: '#185e49',
         fontFamily: 'fjalla One, sans-serif',
         display: 'flex',
         alignItems: 'center',
@@ -105,9 +106,9 @@ export const Login = () => {
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: '15px' }}>
             <label htmlFor="username" style={{ color: '#185e49', fontWeight: 'bold' }}>
-              Username
+              Email
             </label>
-            <input type="text" id="username" name="username" required style={inputStyle} value={username} onChange={handleUsername} />
+            <input type="email" id="email" name="email" required style={inputStyle} value={email} onChange={handleEmail} />
           </div>
           <div style={{ marginBottom: '15px' }}>
             <label htmlFor="password" style={{ color: '#185e49', fontWeight: 'bold' }}>

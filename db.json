@@ -455,6 +455,60 @@
       "email": "nitishkumar2809@gmail.com",
       "password": "12345",
       "id": 8
+    },
+    {
+      "username": "nitish",
+      "email": "nitishkur2809@gmail.com",
+      "password": "nitish",
+      "id": 9
+    },
+    {
+      "username": "rohit",
+      "email": "rohit@gmail.com",
+      "password": "12345",
+      "id": 10
+    },
+    {
+      "username": "mohit",
+      "email": "mohit@gmail.com",
+      "password": "1234",
+      "id": 11
+    },
+    {
+      "username": "amar",
+      "email": "amar@gmail.com",
+      "password": "12345",
+      "id": 12
+    },
+    {
+      "username": "nitish",
+      "email": "nitishkumar2809@gmail.com",
+      "password": "1234567",
+      "id": 13
+    },
+    {
+      "username": "Arjun",
+      "email": "arjun@gmail.com",
+      "password": "12345",
+      "id": 14
+    },
+    {
+      "username": "nitish",
+      "email": "nitishkumar2809@gmail.com",
+      "password": "1111",
+      "id": 15
+    },
+    {
+      "username": "rohit",
+      "email": "nitish2809@gmail.com",
+      "password": "2345",
+      "id": 16
+    },
+    {
+      "username": "nitishkumar",
+      "email": "nitish@gmail.com",
+      "password": "nitish",
+      "id": 17
     }
   ]
 }

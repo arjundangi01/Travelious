@@ -1,0 +1,57 @@
+body {
+	background-color: #185e49;
+	font-family: "fjalla One", sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	margin: 0;
+  }
+  
+  .login-container {
+	background-color: #f9ae05;
+	border-radius: 10px;
+	padding: 20px;
+	width: 300px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .login-header {
+	text-align: center;
+	margin-bottom: 20px;
+	color: #185e49;
+	font-size: 24px;
+  }
+  
+  .input-group {
+	margin-bottom: 15px;
+  }
+  
+  .input-group label {
+	display: block;
+	margin-bottom: 5px;
+	color: #185e49;
+	font-weight: bold;
+  }
+  
+  .input-group input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #185e49;
+	border-radius: 5px;
+  }
+  
+  .login-button {
+	background-color: #f05a1f;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 15px;
+	cursor: pointer;
+	width: 100%;
+	font-weight: bold;
+  }
+  
+  .login-button:hover {
+	background-color: #d9534f;
+  }
