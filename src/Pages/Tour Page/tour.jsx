@@ -10,8 +10,19 @@ import {GiMeal} from "react-icons/gi"
 import {AiTwotoneStar} from "react-icons/ai"
 import {HiArrowNarrowRight } from "react-icons/hi"
 import {HiArrowNarrowLeft} from "react-icons/hi"
+import {FaFilter} from "react-icons/fa"
+import { SearchBar } from './Components/SearchBar';
+import {useNavigate} from "react-router-dom"
+
+
+
+
+
 const Tour = () => {
   const[render,setRender] = useState(1)
+  const[sortBy,setSortBy] = useState("")
+  const[sortbycountry,setSortByCountry] = useState("")
+  const navigate = useNavigate()
 
   const dispatch = useDispatch();
   
@@ -19,24 +30,50 @@ const Tour = () => {
   // console.log(tourData);
 
   const loading = useSelector((store) => store.tourReducer.isLoading)
-  console.log(loading);
+  // console.log(loading);
 
   useEffect(() => {
     dispatch(addTour(render))
-  },[dispatch])
+  },[dispatch,render])
 
-
-
-  function handleNext() {
+  function handleNext(e) {
+    e.preventDefault()
     setRender(prev => prev + 1)
     dispatch(addTour(render + 1)) // Pass the updated render value
   }
-  function handlePrev(){
+  function handlePrev(e){
+    e.preventDefault()
     setRender(prev => prev - 1)
     dispatch(addTour(render - 1))
   }
 
+  function handleSortChange(e) {
+    e.preventDefault();
+    const selectedSort = e.target.value;
+    setSortBy(selectedSort);
+  
+    if (selectedSort === "LtoH") {
+      dispatch(addTour(render, "asc")); // Low to High
+    } else if (selectedSort === "HtoL") {
+      dispatch(addTour(render, "desc")); // High to Low
+    }
+  }
 
+  function handleSortCountry(e) {
+    e.preventDefault();
+    const selectedCountry = e.target.value;
+    setSortByCountry(selectedCountry);
+    // console.log(selectedCountry);
+  
+    dispatch(addTour(render, sortBy, selectedCountry));
+  }
+
+
+
+  function handleDetails(id){
+    navigate(`tour/${id}`)
+  }
+  
 
   return (
     <div>
@@ -47,18 +84,56 @@ const Tour = () => {
 
       <div className={styles.topCover}>
           <img src="https://images.unsplash.com/photo-1598192743377-72736e228eb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1842&q=80"  alt="landscape img" />
-          <p>Find Popular Destination</p>
+          {/* <p>Find Popular Destination</p>
           <div>
             <input className={styles.input} type="text" placeholder='search destination'/>
             <button className={styles.searchBtn}>SEARCH</button>
           </div>
-          <SlLocationPin type='icon' className={styles.location}/>
+          <SlLocationPin type='icon' className={styles.location}/> */}
+          <SearchBar/>
          
       </div>
 
+      
        {/* tour cards */}
        
       <div className={styles.tourCards}>
+
+      {/* filter part */}
+      <div className={styles.filterPart}>
+        <div>
+
+          <div className={styles.fromCountry}>
+            <h6>From Country</h6>
+            <select onChange={handleSortCountry} value={sortbycountry}>
+
+              <option value="">Select</option>
+              <option value="Indonesia">Indonesia</option>
+              <option value="Mauritius">Mauritius</option>
+              <option value="Thiland">Thiland</option>
+              <option value="Bali">Bali</option>
+            </select>
+            
+          </div>
+          {/* // */}
+          <div className={styles.sortBy}>
+          <h6>Sort By</h6>
+          <select onChange={handleSortChange} value={sortBy}>
+            <option value="">Select</option>
+            <option value="LtoH">Low to High</option>
+            <option value="HtoL">High to Low</option>
+        </select>
+          </div>
+          {/* // */}
+          <div className={styles.moreFilter}>
+           <FaFilter/>
+            <h6>More Filters</h6>
+          </div>
+
+        </div>
+        
+
+      </div>
 
 
         {/* is Loading */}
@@ -85,7 +160,7 @@ const Tour = () => {
             {
               tourData?.map((ele) => (
                 <div key={ele.id}>
-                    <img src={ele.url} alt="" />
+                    <img onClick={()=> {handleDetails(ele.id)}} src={ele.url} alt="" />
                     
                     <div className={styles.nameDiv}>
                         <h6>{ele.name}</h6>
@@ -109,7 +184,9 @@ const Tour = () => {
                     <div className={styles.priceDiv}>
 
                       <p>₹ {ele.cost}</p>
-                      <button>Customize & Book <HiArrowNarrowRight className={styles.arrowBtn}/> 
+
+                      <button onClick={()=> {handleDetails(ele.id)}}>Customize & Book <HiArrowNarrowRight className={styles.arrowBtn}/> 
+
                       </button>
 
                     </div>

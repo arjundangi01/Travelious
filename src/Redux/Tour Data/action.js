@@ -3,22 +3,24 @@ import axios from "axios"
 export const ADD_TOUR_REQUEST = "ADD_TOUR_REQUEST"
 export const ADD_TOUR_SUCCESS = "ADD_TOUR_SUCCESS"
 export const ADD_TOUR_FAILURE = "ADD_TOUR_FAILURE"
-
+export const UPDATE_TOUR_DATA = "UPDATE_TOUR_DATA";
 
 
 //Add tour
-
-export const addTour =(render) => async (dispatch) => {
+export const addTour = (render, sortOrder = 'asc', country = '') => async (dispatch) => {
     try {
-        dispatch({type : ADD_TOUR_REQUEST})
-        const res = await axios.get(`https://fair-teal-worm-gown.cyclic.cloud/tours?_limit=12&_page=${render}`)
-        const data = res.data
-        // console.log(data);
-        dispatch({type : ADD_TOUR_SUCCESS,payload : data})
-        
+      let apiUrl = `https://fair-teal-worm-gown.cyclic.cloud/tours?_limit=12&_page=${render}&_sort=cost&_order=${sortOrder}`;
+      
+      if (country) {
+        apiUrl += `&Country=${country}`;
+      }
+  
+      dispatch({ type: ADD_TOUR_REQUEST });
+      const res = await axios.get(apiUrl);
+      const data = res.data;
+      dispatch({ type: ADD_TOUR_SUCCESS, payload: data });
     } catch (error) {
-        console.log("fetching error!");
-        dispatch({type : ADD_TOUR_FAILURE})
-        
+      console.log("fetching error!");
+      dispatch({ type: ADD_TOUR_FAILURE });
     }
-}
+  };
