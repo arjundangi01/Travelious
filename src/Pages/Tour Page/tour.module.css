@@ -15,19 +15,37 @@
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.mainCard > .topCover > p + h6{
+    color: white;
+    font-family: cursive;
+    margin-bottom: 10px ;
+    margin-top: -11px;
+}
+/* .topCover > div{
+    display: flex;
+} */
 .topCover > .location{
    font-size: 20px;
-   margin-left: -32rem;
+   margin-left: -34rem;
    margin-top: -4rem;
 }
 .topCover  .input{
-    width: 450px;
+    width: 320px;
     height: 35px;
     border-radius: 15px;
     border: none;
     margin-right: 5px;
     padding-left: 40px;
     font-size: 18px;
+}
+.topCover .destinationDate{
+    height: 35px;
+    border-radius: 15px;
+    padding:8px;
+    padding-left: 10px;
+    border: none;
+    margin-right: 5px;
+    /* font-size: 18px; */
 }
 .topCover .searchBtn{
     width: 100px;
@@ -41,11 +59,12 @@
 .topCover .searchBtn:hover{
     color: black;
     cursor: pointer;
-    font-weight: bold;   
+    /* font-weight: bold;    */
+    border: 1px solid black;
 }
 
-.tourCards{
-    
+
+.tourCards{  
     width: 80%;
     margin: auto; 
     /* border: 1px solid black;  */
@@ -77,12 +96,25 @@
         margin-left: -23rem;
         margin-top: -4rem;
     }
+    .filterPart{
+        display: none;
+    }
+    .topCover .destinationDate{
+        margin-top: 4px;
+    }
+    .topCover > .location{
+        margin-left: -16.5rem;
+        margin-top: -8.6rem;
+    }
     
 }
 
 @media only screen and (max-width : 840px) and (min-width: 500px){
     .singleCard{
         grid-template-columns: repeat(2,1fr);
+    }
+    .filterPart{
+        display: none;
     }
 }
 

@@ -68,11 +68,18 @@ const Tour = () => {
     dispatch(addTour(render, sortBy, selectedCountry));
   }
 
-
+//  function handleSearchTour(search){
+//       console.log(search);
+//       const render = 1; 
+//       const sortBy = "";
+//       dispatch(addTour(render, sortBy, search));
+//   }
 
   function handleDetails(id){
     navigate(`tour/${id}`)
   }
+
+ 
   
 
   return (
@@ -84,12 +91,18 @@ const Tour = () => {
 
       <div className={styles.topCover}>
           <img src="https://images.unsplash.com/photo-1598192743377-72736e228eb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1842&q=80"  alt="landscape img" />
+
           {/* <p>Find Popular Destination</p>
+          <h6>
+          Dont't wait untill tomorrow, discover your adventure now and feel the sensation of closeness to nature around you!
+          </h6>
           <div>
             <input className={styles.input} type="text" placeholder='search destination'/>
+            <input type="date" className={styles.destinationDate} />
             <button className={styles.searchBtn}>SEARCH</button>
           </div>
           <SlLocationPin type='icon' className={styles.location}/> */}
+
           <SearchBar/>
          
       </div>
