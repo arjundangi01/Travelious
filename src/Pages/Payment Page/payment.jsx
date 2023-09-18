@@ -6,7 +6,11 @@ import AddGuest from "./AddGuest";
 import Pricetotal from "./Pricetotal";
 import { FaHeart, FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import { singleTour } from "../../Redux/Tour Detail/action";
+import { newBookingAction } from "../../Redux/User Data/action";
+import Navbar from "../../Components/navbar";
+// import { Navbar } from "react-bootstrap";
 
 const Payment = () => {
   const[totalGuest,setTotalGuest]=useState(1);
@@ -17,6 +21,8 @@ const Payment = () => {
   const[nextDate,setNextDate]=useState('')
   const[roomChoice,setRoomChoice]=useState('');
   const [dateDifference, setDateDifference] = useState(0);
+  const dispatch = useDispatch();
+
 const guestMap=[];
 const navigate=useNavigate();
 for(var i=1;i<=totalGuest;i++){
@@ -33,9 +39,18 @@ for(var i=1;i<=totalGuest;i++){
     person: totalGuest
 }
 
+const { UserData } = useSelector((store) => store.userReducer);
 
 const ratings=4;
-// const hotelData=useSelector((store)=>{return store});
+  // const hotelData=useSelector((store)=>{return store});
+  // const { tourObj:hotelData } = useSelector((store) => store.tourDetailReducer);
+  // console.log("tourObj",hotelData);
+  // // const { id } = useParams();
+  
+  // useEffect(() => {
+  //   dispatch(singleTour(id));
+  // }, []);
+
 const hotelData={
   id: 5,
   Country: "Indonesia",
@@ -125,7 +140,14 @@ const displayRazorpay=async (amount)=>{
     name:"Enjoy with Travelious",
     handler:function(response){
       // alert(response.razorpay_payment_id)
+      var bookingDate = new Date().toLocaleDateString();
+    
+      const newObj = {...UserData,bookingHistory:[...UserData.bookingHistory,{...hotelData,status:true,bookingDate}]};
+      console.log("first",newObj)
+     
+      dispatch(newBookingAction(newObj))
       navigate("/payment/confirm")
+
       
     }
   };
@@ -165,6 +187,7 @@ const handleFormSubmit = (e) => {
 // console.log(date-nex)
   return (
     <div className="App">
+      <Navbar/>
      <>
     
   <div id={styles.back_ground} />
