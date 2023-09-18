@@ -22,9 +22,9 @@ const Navbar = () => {
           className=" align-items-center justify-content-around w-75"
           id={style.menu}
         >
-          <a className="nav-link active" aria-current="page" href="#">
+          <Link to="/tour" className="nav-link active" aria-current="page" href="#">
             Discover
-          </a>
+          </Link>
           <a className="nav-link active" aria-current="page" href="#">
             Service
           </a>

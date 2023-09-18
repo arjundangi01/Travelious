@@ -17,7 +17,7 @@ const TourDetail = () => {
   const [option, setOption] = useState("daywise");
   const dispatch = useDispatch();
   const { tourObj } = useSelector((store) => store.tourDetailReducer);
-  console.log(tourObj);
+  console.log("tourObj",tourObj);
   const { id } = useParams();
 
   useEffect(() => {

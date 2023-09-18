@@ -53,7 +53,7 @@ const Policies = () => {
         </li>
         <li>
           In case your package needs to be cancelled due to any natural
-          calamity, weather conditions etc. MakeMyTrip shall strive to give you
+          calamity, weather conditions etc. Travelious shall strive to give you
           the maximum possible refund subject to the agreement made with our
           trade partners/vendors.
         </li>
@@ -73,8 +73,8 @@ const Policies = () => {
         <li>
           The package price does not include mandatory gala dinner charges
           levied by the hotels especially during New Year and Christmas or any
-          special occasions. MakeMyTrip shall try to communicate the same while
-          booking the package. However MakeMyTrip may not have this information
+          special occasions. Travelious shall try to communicate the same while
+          booking the package. However Travelious may not have this information
           readily available all the time.
         </li>
         <li>
