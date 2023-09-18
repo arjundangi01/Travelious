@@ -10,6 +10,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import { singleTour } from "../../Redux/Tour Detail/action";
 import { newBookingAction } from "../../Redux/User Data/action";
 import Navbar from "../../Components/navbar";
+import Footer from "../../Components/footer";
 // import { Navbar } from "react-bootstrap";
 
 const Payment = () => {
@@ -43,32 +44,32 @@ const { UserData } = useSelector((store) => store.userReducer);
 
 const ratings=4;
   // const hotelData=useSelector((store)=>{return store});
-  // const { tourObj:hotelData } = useSelector((store) => store.tourDetailReducer);
-  // console.log("tourObj",hotelData);
-  // // const { id } = useParams();
+  const { tourObj:hotelData } = useSelector((store) => store.tourDetailReducer);
+  console.log("tourObj",hotelData);
+  const { id } = useParams();
   
-  // useEffect(() => {
-  //   dispatch(singleTour(id));
-  // }, []);
+  useEffect(() => {
+    dispatch(singleTour(id));
+  }, []);
 
-const hotelData={
-  id: 5,
-  Country: "Indonesia",
-  name: "Tampaksiring, Bali, Indonesia",
-  url: "https://a0.muscache.com/im/pictures/4a5c629b-9c92-450e-8d8f-995875798838.jpg?im_w=720",
-  description: "Located just a 20-minute scooter ride from the vibrant centre of Ubud.",
-  cost: "43201",
-  title: "Entire cabin hosted by Eco Six Bali",
-  heading: "Dome - Bamboo Villa in Eco Six Bali",
-  urls: "https://a0.muscache.com/im/pictures/4a5c629b-9c92-450e-8d8f-995875798838.jpg?im_w=960",
-  "url1": "https://a0.muscache.com/im/pictures/08a9afde-e2f2-48aa-b8b0-a7e747318943.jpg?im_w=480",
-  "url2": "https://a0.muscache.com/im/pictures/b51f509a-9c94-4d1c-a31c-1a465e1670ac.jpg?im_w=480",
-  "url4": "https://a0.muscache.com/im/pictures/0295e1cd-09fe-448a-b837-7bf5ade3809c.jpg?im_w=480",
-  "url3": "https://a0.muscache.com/im/pictures/6d3f81b5-affa-4c13-8681-4081d2568be6.jpg?im_w=480",
-  guestDetail: "4 guests2-bedrooms2-beds2-bathrooms",
-  description1: "The Dome is a one bedroom bamboo villa built on two floors. Its ground floor houses an open air living room fitted with a dining area, a seating area and balinese style hammock.The living room has direct access to a spacious balinese style garden and the beautiful Santorini style infinity pool.Amenities in the living room include a projector with Netflix, Nespresso coffee machine and refrigerated minibar.The master bedroom on the upper floor is fitted with a king size bed, a walk-in wardrobe, air conditioning, an in-room bathtub from where our guests can enjoy the beautiful rice fields views and a balcony overlooking the famous volcano Mount Agung. The bedroom houses a modernly equipped bathroom.",
+// const hotelData={
+//   id: 5,
+//   Country: "Indonesia",
+//   name: "Tampaksiring, Bali, Indonesia",
+//   url: "https://a0.muscache.com/im/pictures/4a5c629b-9c92-450e-8d8f-995875798838.jpg?im_w=720",
+//   description: "Located just a 20-minute scooter ride from the vibrant centre of Ubud.",
+//   cost: "43201",
+//   title: "Entire cabin hosted by Eco Six Bali",
+//   heading: "Dome - Bamboo Villa in Eco Six Bali",
+//   urls: "https://a0.muscache.com/im/pictures/4a5c629b-9c92-450e-8d8f-995875798838.jpg?im_w=960",
+//   "url1": "https://a0.muscache.com/im/pictures/08a9afde-e2f2-48aa-b8b0-a7e747318943.jpg?im_w=480",
+//   "url2": "https://a0.muscache.com/im/pictures/b51f509a-9c94-4d1c-a31c-1a465e1670ac.jpg?im_w=480",
+//   "url4": "https://a0.muscache.com/im/pictures/0295e1cd-09fe-448a-b837-7bf5ade3809c.jpg?im_w=480",
+//   "url3": "https://a0.muscache.com/im/pictures/6d3f81b5-affa-4c13-8681-4081d2568be6.jpg?im_w=480",
+//   guestDetail: "4 guests2-bedrooms2-beds2-bathrooms",
+//   description1: "The Dome is a one bedroom bamboo villa built on two floors. Its ground floor houses an open air living room fitted with a dining area, a seating area and balinese style hammock.The living room has direct access to a spacious balinese style garden and the beautiful Santorini style infinity pool.Amenities in the living room include a projector with Netflix, Nespresso coffee machine and refrigerated minibar.The master bedroom on the upper floor is fitted with a king size bed, a walk-in wardrobe, air conditioning, an in-room bathtub from where our guests can enjoy the beautiful rice fields views and a balcony overlooking the famous volcano Mount Agung. The bedroom houses a modernly equipped bathroom.",
 
-};
+// };
 
 useEffect(() => {
   const getCurrentDate = () => {
@@ -142,7 +143,7 @@ const displayRazorpay=async (amount)=>{
       // alert(response.razorpay_payment_id)
       var bookingDate = new Date().toLocaleDateString();
     
-      const newObj = {...UserData,bookingHistory:[...UserData.bookingHistory,{...hotelData,status:true,bookingDate}]};
+      const newObj = {...UserData,bookingHistory:[...UserData.bookingHistory,{...hotelData,status:true,bookingDate,cost:payable}]};
       console.log("first",newObj)
      
       dispatch(newBookingAction(newObj))
@@ -587,7 +588,7 @@ const handleFormSubmit = (e) => {
       </div>
     </div>
   </form>
-  <footer></footer>
+  {/* <Footer/> */}
   {/* 
 </html>
 */}

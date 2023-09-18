@@ -195,7 +195,7 @@ input::-webkit-inner-spin-button {
 
 #main_b>div>div>.insurance>div>div:last-child>div:last-child button {
     background-color: white;
-    border: 2px solid #DC5F00;
+    border: 2px solid #fb7617;
     font-weight: 600;
     border-radius: 7px;
     padding: 2px 5px;
@@ -283,7 +283,7 @@ input::-webkit-inner-spin-button {
     border-radius: 7px;
 }
 #main_b .guest>#add-guest{
-    background-color: #DC5F00;
+    background-color: #fb7617;
     color: white;
     margin-bottom: 5px;
     height: 29px;
@@ -424,11 +424,15 @@ input::-webkit-inner-spin-button {
 }
 .hotel_info>.check_in .date_picker,.hotel_info>.check_in select,#numguest{
     padding: 0.5rem;
+    /* width: 40px; */
     /* color: white; */
     border-radius: 3px;
     font-weight: 600;
     height: 2.4rem;
     border: 1px solid rgb(208, 10, 10);
+}
+#numroom{
+    width: 60px;
 }
 .hotel_info>.check_in #guestDiv{
     display: flex;
@@ -449,9 +453,10 @@ input::-webkit-inner-spin-button {
     display: flex;
     align-items: flex-start;
     gap: 0.6rem;
-    padding: 1em;
+    padding:  0em 1em;
     transition: 0.5s;
     cursor: pointer;
+    /* border: 1px solid #000; */
 }
 .right_div .offerDiv>div.active{
     background-color: #fb7617;
