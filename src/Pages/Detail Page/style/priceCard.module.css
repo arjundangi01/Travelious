@@ -1,43 +1,57 @@
 .price_card {
-    width: 30%;
-   overflow: hidden;
-    align-self: center;
-    border-radius: 20px;
-    /* border: 1px solid rgba(0, 0, 0, 0.02); */
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  width: 30%;
+  overflow: hidden;
+  align-self: center;
+  border-radius: 20px;
+  /* border: 1px solid rgba(0, 0, 0, 0.02); */
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.price_first_div {
+  padding: 0.7rem 1rem;
+  /* border-radius: 20px 20px 0px 0px; */
+
+  background: linear-gradient(#8aafda85, #d7f1ff);
+}
+.price_first_div * {
+  margin: 0;
+}
+.price_first_div h2 {
+  font-weight: bolder;
+  /* color: black; */
+}
+.price_sec_div {
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 1rem 1rem;
+  font-weight: 600;
+}
+.price_third_div {
+  padding: 1rem 1rem;
+}
+.price_third_div button {
+  width: 100%;
+  background-color: #fb7617;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 600;
+  /* border-radius: 0px 0px 20px 20px; */
+}
+
+@media (min-width: 955px) and (max-width: 1100px) {
+  .price_card {
+    width: 35%;
   }
-  .price_first_div {
-    padding: 0.7rem 1rem;
-    /* border-radius: 20px 20px 0px 0px; */
-  
-    background: linear-gradient(#8aafda85, #d7f1ff);
+}
+@media (min-width: 855px) and (max-width: 955px) {
+  .price_card {
+    width: 40%;
   }
-  .price_first_div * {
-    margin: 0;
+}
+@media (max-width: 855px) {
+  .price_card {
+    width: 90%;
   }
-  .price_first_div h2 {
-    font-weight: bolder;
-    /* color: black; */
-  }
-  .price_sec_div {
-    border-top: 1px solid rgba(0, 0, 0, 0.4);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    padding: 1rem 1rem;
-    font-weight: 600;
-  }
-  .price_third_div {
-    padding: 1rem 1rem;
-  
-  }
-  .price_third_div button{
-    width: 100%;
-    background-color: #fb7617;
-    border: none;
-    border-radius: 2rem;
-    padding: 0.5rem 1rem;
-    color: white;
-    font-weight: 600;
-    /* border-radius: 0px 0px 20px 20px; */
-  }
- 
+}

@@ -1,15 +1,40 @@
 .container{
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 1rem;
 }
 
-.heading_div{
-    color: orange;
-    border-bottom: 3px solid orange;
-}
-.empty_div{
-    padding: 1rem;
-    text-align: center;
-    color: rgb(255, 81, 0);
 
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px dashed grey;
+}
+.dot{
+    width: 40px;
+    height: 40px;
+    /* background-color: green; */
+    border-radius: 50%;
+}
+.row_left_div{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.row p{
+    margin: 0;
+}
+.row button{
+    background-color: #fb7617;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+.row_right_div{
+    display: flex;
+    gap: 2rem;
 }

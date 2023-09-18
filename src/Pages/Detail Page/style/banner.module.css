@@ -40,3 +40,16 @@
   transition: 0.8s;
   transform: scale(1.5);
 }
+
+
+@media (max-width: 855px) {
+  .banner {
+    height: 350px;
+    
+  }
+  .smallsdiv {
+    width: 95%;
+  margin-top: -2rem;
+   
+  }
+}

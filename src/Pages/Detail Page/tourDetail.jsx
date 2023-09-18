@@ -10,14 +10,20 @@ import Intro from "./intro";
 import Policies from "./policies";
 import Incandexc from "./incandexc";
 import PriceCard from "./priceCard";
+import { useParams } from "react-router-dom";
+import { getUserAction } from "../../Redux/User Data/action";
 const TourDetail = () => {
   const [option, setOption] = useState("daywise");
   const dispatch = useDispatch();
-  const tourObj = useSelector((store) => store.tourDetailReducer);
+  const {tourObj} = useSelector((store) => store.tourDetailReducer);
   console.log(tourObj);
+  const {id} = useParams()
+ 
   useEffect(() => {
-    dispatch(singleTour(1));
+    dispatch(singleTour(id));
+   
   }, []);
+ 
   return (
     <>
       <Navbar />

@@ -2,6 +2,14 @@
     width: 60%;
     margin: auto;
     margin-top: 4rem;
+    position: relative;
+    /* background-color: aliceblue; */
+}
+.empty_div{
+    padding: 1rem;
+    text-align: center;
+    color: rgb(255, 81, 0);
+
 }
 .profile_section{
     display: flex;
@@ -12,19 +20,31 @@
     /* border: 1px solid #000; */
 }
 .profile_card_div{
-    width: 40%;
+    width: 540px;
 
     /* height: 100%; */
 }
 .animation_div{
     
-    width: 60%;
+    width: 650px;
+    height: 220px;
+    overflow: hidden;
   
 
 }
 .animation_div img{
-    width: 60%;    
+    margin-top: -7rem;
+    width: 100%;    
     border-radius: 10px;
+    object-fit: cover;
+}
+.history_section{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+}
+.heading_div{
+    color: orange;
+    border-bottom: 3px solid orange;
 }
 
 

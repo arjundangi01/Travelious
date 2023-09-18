@@ -1,0 +1,44 @@
+.parent {
+    margin-top: 4rem;
+}
+.container {
+  /* width: 80%; */
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid #000; */
+}
+.left{
+  width: 40%;
+}
+.left h1{
+  font-size: 4rem;
+}
+
+.left_middle{
+  font-size: 1.3rem;
+
+}
+.left_last img{
+  width: 100%;
+}
+.right{
+  width: 50%;
+}
+.right img{
+  width:100%;
+}
+
+@media (max-width: 455px) {
+  .container {
+    
+    flex-direction: column;
+  }
+  .left h1{
+    font-size: 2rem;
+  }
+  .left ,.right{
+    width: 100%;
+  }
+
+}

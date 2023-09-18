@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style/banner.module.css";
 const Banner = ({ data }) => {
   const [imgUrl, setUrl] = useState(data.url);
-  console.log(imgUrl)
+  useEffect(() => {
+    
+    setUrl(data.url)
+  },[])
+  
   return (
     <div className={style.parent}>
       <div className={style.container}>

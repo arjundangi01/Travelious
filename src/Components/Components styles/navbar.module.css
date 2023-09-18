@@ -1,3 +1,79 @@
-#navbar{
-    background-image: url("https://i.ibb.co/Qj38wS5/NavBG12.png");
+#navbar {
+  background-image: url("https://i.ibb.co/Qj38wS5/NavBG12.png");
+  color: rgb(173, 176, 178);
+  padding: 1rem 3rem 1rem 3rem;
+  /* position: relative; */
+}
+.log_reg_div {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+.registered_button {
+  background-color: #fb7617;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 600;
+}
+.right_menu{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  /* border: 1px solid #000; */
+
+}
+.sidebar{
+  width: 50%;
+  position: fixed;
+  right: 0;
+  top: 79px;
+  height: 100%;
+  background: #205c35; 
+  color: rgb(173, 176, 178);
+  /*  */
+  z-index: 10000;
+  
+  
+}
+.sidebar_menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 25%;
+  align-items: center;
+}
+.hamburger{
+  display: none;
+  font-size: 2rem;
+
+
+}
+
+#menu {
+  display: flex;
+}
+@media (max-width: 855px) {
+  #navbar{
+    padding: 1rem 0.9rem 1rem 0.5rem;
+  }
+  #menu {
+    /* background-color: #fb7617; */
+    display: none;
+  }
+  .log_reg_div {
+    gap: 0.9rem;
+    /* border: 1px solid #000; */
+  }
+  .registered_button {
+    border-radius: 10px;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  .hamburger{
+    font-size: 2rem;
+  display: block;
+
+  }
 }

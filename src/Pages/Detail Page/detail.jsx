@@ -6,16 +6,7 @@ import style from "./style/detail.module.css"
 const Detail = ({data}) => {
   return (
       <div className={style.container} >
-          {/* <div className={style.top} >
-              <div className={style.price_div}  >
-                  <p>starting from</p>
-                  <h2> ₹ {data.cost}</h2>
-                  <p>per person</p>
-              </div>
-              <div>
-                  <button>PROCEED TO BOOK ONLINE</button>
-              </div>
-          </div>*/}
+          
           <div className={style.bottom} >
               <h5> <span> <BsBootstrapReboot/> </span> Flexible Cancelation</h5>
               <h5> <span><PiMedal/></span> Best price guarantee</h5>

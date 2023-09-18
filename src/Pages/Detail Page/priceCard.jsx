@@ -1,6 +1,24 @@
-import React from "react";
-import style from "./style/priceCard.module.css"
-const PriceCard = ({tourObj}) => {
+import React, { useEffect } from "react";
+import style from "./style/priceCard.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserAction, newBookingAction } from "../../Redux/User Data/action";
+const PriceCard = ({ tourObj }) => {
+  const dispatch = useDispatch();
+
+  const { UserData } = useSelector((store) => store.userReducer);
+  console.log( "userData",UserData);
+  const handleClick = () => {
+    var bookingDate = new Date().toLocaleDateString();
+    
+    const newObj = {...UserData,bookingHistory:[...UserData.bookingHistory,{...tourObj,status:true,bookingDate}]};
+    console.log("first",newObj)
+   
+    dispatch(newBookingAction(newObj))
+  };
+  useEffect(() => {
+    dispatch(getUserAction("aby45kuf4ku"));
+   
+  }, []);
   return (
     <div className={style.price_card}>
       <div className={style.price_first_div}>
@@ -10,7 +28,11 @@ const PriceCard = ({tourObj}) => {
       </div>
       <div className={style.price_sec_div}>Hotel Include in this package</div>
       <div className={style.price_third_div}>
-        <button>PROCEED TO BOOK ONLINE</button>
+        <button
+          onClick={handleClick}
+        >
+          PROCEED TO BOOK ONLINE
+        </button>
       </div>
     </div>
   );

@@ -1,0 +1,54 @@
+.parent {
+  margin-top: 4rem;
+  background-image: url("https://i.ibb.co/Nngmh8m/Pink.png");
+  border-radius: 15px;
+  padding: 3rem 0rem;
+  margin-bottom: 2rem;
+}
+.container {
+  /* width:530px; */
+  width: 40%;
+  margin: auto;
+  text-align: center;
+}
+.container h1 {
+  font-size: 4.2rem;
+}
+.container p {
+  font-size: 1.3rem;
+  color: #dd5a1d;
+}
+
+.container button {
+  background-color: #fb7617;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1.2rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+@media (max-width: 455px) {
+  .container {
+    /* width:530px; */
+    width: 80%;
+    
+    
+    
+  }
+  .container h1 {
+    font-size: 2rem;
+  }
+  .container p {
+    font-size: 1rem;
+  }
+  .container button {
+  
+    border-radius: 10px;
+    padding: 0.4rem 1rem;
+
+    font-size: 1rem;
+   
+  }
+}
