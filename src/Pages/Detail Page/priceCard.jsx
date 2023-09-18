@@ -2,18 +2,22 @@ import React, { useEffect } from "react";
 import style from "./style/priceCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAction, newBookingAction } from "../../Redux/User Data/action";
+import { useNavigate } from "react-router";
+import { moveToPaymentAction } from "../../Redux/TotalAmount/action";
 const PriceCard = ({ tourObj }) => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate()
   const { UserData } = useSelector((store) => store.userReducer);
   console.log( "userData",UserData);
   const handleClick = () => {
-    var bookingDate = new Date().toLocaleDateString();
+    // var bookingDate = new Date().toLocaleDateString();
     
-    const newObj = {...UserData,bookingHistory:[...UserData.bookingHistory,{...tourObj,status:true,bookingDate}]};
-    console.log("first",newObj)
+    // const newObj = {...UserData,bookingHistory:[...UserData.bookingHistory,{...tourObj,status:true,bookingDate}]};
+    // console.log("first",newObj)
    
-    dispatch(newBookingAction(newObj))
+    // dispatch(newBookingAction(newObj))
+    navigate("/payment")
+    dispatch(moveToPaymentAction(tourObj.id))
   };
   useEffect(() => {
     dispatch(getUserAction("aby45kuf4ku"));
