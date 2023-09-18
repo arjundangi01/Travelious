@@ -5,3 +5,16 @@
 .parent span{
     color: #fb7617;
  }
+
+ @media (min-width:1100px) and (max-width:1500px) {
+    .parent {
+        width: 90%;
+        margin: auto;
+    }
+  }
+ @media (min-width:900px) and (max-width:1100px) {
+    .parent {
+        width: 95%;
+        margin: auto;
+    }
+  }

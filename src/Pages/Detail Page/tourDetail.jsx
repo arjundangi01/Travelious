@@ -12,18 +12,18 @@ import Incandexc from "./incandexc";
 import PriceCard from "./priceCard";
 import { useParams } from "react-router-dom";
 import { getUserAction } from "../../Redux/User Data/action";
+import Footer from "../../Components/footer";
 const TourDetail = () => {
   const [option, setOption] = useState("daywise");
   const dispatch = useDispatch();
-  const {tourObj} = useSelector((store) => store.tourDetailReducer);
+  const { tourObj } = useSelector((store) => store.tourDetailReducer);
   console.log(tourObj);
-  const {id} = useParams()
- 
+  const { id } = useParams();
+
   useEffect(() => {
     dispatch(singleTour(id));
-   
   }, []);
- 
+
   return (
     <>
       <Navbar />
@@ -42,7 +42,7 @@ const TourDetail = () => {
           <div>
             <Detail data={tourObj} />
           </div>
-          <PriceCard tourObj={tourObj}  />
+          <PriceCard tourObj={tourObj} />
         </div>
 
         {/* --------------------- */}
@@ -70,7 +70,10 @@ const TourDetail = () => {
             {option == "daywise" && <Days />}
             {option == "policies" && <Policies />}
           </div>
+          <Footer />
+
         </div>
+       
       </div>
     </>
   );

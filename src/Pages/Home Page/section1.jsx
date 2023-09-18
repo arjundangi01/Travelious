@@ -23,20 +23,7 @@ const Section1 = () => {
           <img src={boyImg} alt="" />
         </div>
       </div>
-      <div className={style.chain_div}>
-        <div>
-          <img src={chianImg} alt="" />
-        </div>
-        <div>
-          <img src={chianImg} alt="" />
-        </div>
-        <div>
-          <img src={chianImg} alt="" />
-        </div>
-        <div>
-          <img src={chianImg} alt="" />
-        </div>
-      </div>
+     
     </div>
   );
 };
