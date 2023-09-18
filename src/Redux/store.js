@@ -11,4 +11,4 @@ const rootReducer = combineReducers({
   userReducer,
   tourDetailReducer,
 });
-export const store = legacy_createStore(rootReducer, applyMiddleware(thunk));
+export const store = legacy_createStore(rootReducer,applyMiddleware(thunk));
