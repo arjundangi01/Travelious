@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './payment.module.css'
 import styles from "./payment.module.css"
 import HotelInfo from "./HotelInfo";
 import AddGuest from "./AddGuest";
 import Pricetotal from "./Pricetotal";
+import { FaHeart, FaStar } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import {useNavigate} from "react-router-dom";
+
 const Payment = () => {
+  const[totalGuest,setTotalGuest]=useState(1);
+  const[totalRoom,setTotalRoom]=useState(1);
+  const[promoCode,setPromoCode]=useState("");
+  const[payable,setPayable]=useState(0);
+  const [date, setDate] = useState('');
+  const[nextDate,setNextDate]=useState('')
+  const[roomChoice,setRoomChoice]=useState('');
+  const [dateDifference, setDateDifference] = useState(0);
+const guestMap=[];
+const navigate=useNavigate();
+for(var i=1;i<=totalGuest;i++){
+  guestMap.push(i);
+}
   
   let data = {
     roomStr: 2,
@@ -13,42 +30,181 @@ const Payment = () => {
     promo: 5,
     extra: 3,
     night: 2,
-    person: 3
+    person: totalGuest
 }
+
+
+const ratings=4;
+// const hotelData=useSelector((store)=>{return store});
+const hotelData={
+  id: 5,
+  Country: "Indonesia",
+  name: "Tampaksiring, Bali, Indonesia",
+  url: "https://a0.muscache.com/im/pictures/4a5c629b-9c92-450e-8d8f-995875798838.jpg?im_w=720",
+  description: "Located just a 20-minute scooter ride from the vibrant centre of Ubud.",
+  cost: "43201",
+  title: "Entire cabin hosted by Eco Six Bali",
+  heading: "Dome - Bamboo Villa in Eco Six Bali",
+  urls: "https://a0.muscache.com/im/pictures/4a5c629b-9c92-450e-8d8f-995875798838.jpg?im_w=960",
+  "url1": "https://a0.muscache.com/im/pictures/08a9afde-e2f2-48aa-b8b0-a7e747318943.jpg?im_w=480",
+  "url2": "https://a0.muscache.com/im/pictures/b51f509a-9c94-4d1c-a31c-1a465e1670ac.jpg?im_w=480",
+  "url4": "https://a0.muscache.com/im/pictures/0295e1cd-09fe-448a-b837-7bf5ade3809c.jpg?im_w=480",
+  "url3": "https://a0.muscache.com/im/pictures/6d3f81b5-affa-4c13-8681-4081d2568be6.jpg?im_w=480",
+  guestDetail: "4 guests2-bedrooms2-beds2-bathrooms",
+  description1: "The Dome is a one bedroom bamboo villa built on two floors. Its ground floor houses an open air living room fitted with a dining area, a seating area and balinese style hammock.The living room has direct access to a spacious balinese style garden and the beautiful Santorini style infinity pool.Amenities in the living room include a projector with Netflix, Nespresso coffee machine and refrigerated minibar.The master bedroom on the upper floor is fitted with a king size bed, a walk-in wardrobe, air conditioning, an in-room bathtub from where our guests can enjoy the beautiful rice fields views and a balcony overlooking the famous volcano Mount Agung. The bedroom houses a modernly equipped bathroom.",
+
+};
+
+useEffect(() => {
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  setDate(getCurrentDate());
+}, []);
+
+useEffect(() => {
+  const calculateNextDate = () => {
+    const today = new Date();
+    today.setDate(today.getDate() + 5); 
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); 
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  setNextDate(calculateNextDate());
+}, []);
+
+function dateDiffInDays(date1, date2) {
+  const utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+  const utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+  return Math.floor((utc2 - utc1) / (1000 * 60 * 60 * 24));
+}
+
+useEffect(() => {
+  const date1 = new Date(date);
+  const date2 = new Date(nextDate);
+  const daysDifference = dateDiffInDays(date1, date2);
+  setDateDifference(daysDifference);
+}, [date, nextDate]);
+console.log(dateDifference||5)
+
+
+const loadScript=(src)=>{
+  return new Promise((resolve)=>{
+    const script=document.createElement("script");
+    script.src=src
+    script.onload=()=>{
+      resolve(true)
+    }
+    script.onerror=()=>{
+      resolve(false)
+    }
+    document.body.appendChild(script)
+    console.log("hey")
+  
+  })
+}
+const displayRazorpay=async (amount)=>{
+  const res =await loadScript(`https://checkout.razorpay.com/v1/checkout.js`);
+  if(!res){
+    alert("You are offline...failed to load!!")
+
+    return
+  }
+  const options={
+    key:"rzp_test_bYgcKIf2wUpOw9",
+    currency:"INR",
+    amount:amount*100,
+    name:"Enjoy with Travelious",
+    handler:function(response){
+      // alert(response.razorpay_payment_id)
+      navigate("/payment/confirm")
+      
+    }
+  };
+  const paymentObject=new window.Razorpay(options)
+  paymentObject.open()
+}
+
+const validateInputs = () => {
+
+  const emailInput = document.getElementById("emailForm");
+  // console.log(firstNameInput)
+  const mobilForm=document.getElementById("mobilForm");
+  if (!emailInput.value.trim()) {
+    return false; 
+  }
+
+  if (!mobilForm.value.trim()) {
+    return false; 
+  }
+
+
+  return true; 
+};
+
+const handleFormSubmit = (e) => {
+  e.preventDefault(); 
+
+
+  if (validateInputs()) {
+
+    displayRazorpay(payable);
+  } else {
+  
+    alert("Please fill in all required fields.");
+  }
+};
+// console.log(date-nex)
   return (
     <div className="App">
      <>
     
   <div id={styles.back_ground} />
-  <form id={styles.main_b}>
+  <form id={styles.main_b} onSubmit={handleFormSubmit}>
     <div className={styles.left_div}>
       <div>
         <div className={`${styles.h2div}`}>
         {/* //${styles.active} */}
           <img src="https://img.icons8.com/?size=512&id=rAYGhi9tou6j&format=png" />
           <div>
-            <h2>Review package</h2>
+            <h2>Review package</h2> 
           </div>
           <img
             className={`${styles.active}`}
-            src="https://img.icons8.com/?size=27&id=88000&format=png"
+            // src="https://img.icons8.com/?size=27&id=88000&format=png"
           />
         </div>
         <div className={styles.content} >
         {/* "content collapse show" */}
           <div className={styles.hotel_info}>
             <div className={styles.infoDiv}>
-              <HotelInfo/>
+              <HotelInfo hotelData={hotelData}/>
             </div>
             <div className={styles.check_in}>
               <div>
                 <p>Check In</p>
-                <input type="date" className={styles.date_picker} id="checkindate" />
+                <input
+  type="date"
+  className={styles.date_picker}
+  onChange={(e) => setDate(e.target.value)}
+  value={date}
+  id="checkindate"
+   
+/>
+
                 <p>12:00 PM</p>
               </div>
               <div>
                 <p>Rooms Choice</p>
-                <select id="roomtype">
+                <select id="roomtype" onChange={(e)=>{setRoomChoice(e.target.value)}} >
                   <option value="deluxe">Deluxe</option>
                   <option value="suite">Suite</option>
                 </select>
@@ -56,7 +212,7 @@ const Payment = () => {
               <div id={styles.guestDiv}>
                 <div>
                   <p>Guests</p>
-                  <select id={styles.numguest}>
+                  <select id={styles.numguest}  onChange={(e)=>{e.preventDefault();setTotalGuest(e.target.value)}}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
                     <option value={3}>3</option>
@@ -72,7 +228,7 @@ const Payment = () => {
                 </div>
                 <div>
                   <p>Rooms</p>
-                  <select id="numroom">
+                  <select id={styles.numroom}onChange={(e)=>{e.preventDefault(); setTotalRoom(e.target.value)}}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
                     <option value={3}>3</option>
@@ -81,7 +237,13 @@ const Payment = () => {
               </div>
               <div>
                 <p>Check Out</p>
-                <input type="date" className={styles.date_picker} id="checkoutdate" />
+                <input
+  type="date"
+  value={nextDate}
+  onChange={(e) => setNextDate(e.target.value)}
+  className={styles.date_picker}
+  id="checkoutdate"
+/>
                 <p>11:00 AM</p>
               </div>
             </div>
@@ -97,14 +259,13 @@ const Payment = () => {
           </div>
           <img
             className={`${styles.active}`}
-            src="https://img.icons8.com/?size=27&id=88000&format=png"
+            // src="https://img.icons8.com/?size=27&id=88000&format=png"
           />
         </div>
         <div className={`${styles.guest}`}>
         {/* content guest collapse show */}
           <div className={styles.persons}>
-          <AddGuest/>
-
+        {guestMap.map((e,ind)=>(<AddGuest key={ind}/>))}
           </div>
           {/* <button id="add-guest" className="btn btn-info btn-sm">
             Add Guest
@@ -117,7 +278,7 @@ const Payment = () => {
               </span>
             </div>
             <input
-              type="text"
+              type="email"
               placeholder="Enter Email Address"
               id="emailForm"
               required=""
@@ -127,7 +288,7 @@ const Payment = () => {
             Mobile Number
             <div>
               <div>+91</div>
-              <input type="text" placeholder="Enter Phone Number" required="" />
+              <input type="number"  id="mobilForm"    placeholder="Enter Phone Number"  required="" />
             </div>
           </div>
           <hr style={{ width: "100%", margin: 0 }} />
@@ -152,7 +313,7 @@ const Payment = () => {
           </div>
           <img
             className={`${styles.active}`}
-            src="https://img.icons8.com/?size=27&id=88000&format=png"
+            // src="https://img.icons8.com/?size=27&id=88000&format=png"
           />
         </div>
         <div className={`${styles.gst}`}>
@@ -205,7 +366,7 @@ const Payment = () => {
           </div>
           <img
             className={`${styles.active}`}
-            src="https://img.icons8.com/?size=27&id=88000&format=png"
+            // src="https://img.icons8.com/?size=27&id=88000&format=png"
           />
         </div>
         <div className={`${styles.insurance}`}>
@@ -279,6 +440,7 @@ const Payment = () => {
         id="goToPay"
         type="submit"
         defaultValue="Proceed to payment"
+       
         style={{ marginBottom: 10,  lineHeight: "2em", textAlign: "center", }}
       />
       <sub style={{ marginBottom: 10, lineHeight: "1em", textAlign: "center" }}>
@@ -296,12 +458,12 @@ const Payment = () => {
           </div>
           <img
             className={`${styles.active}`}
-            src="https://img.icons8.com/?size=27&id=88000&format=png"
+            // src="https://img.icons8.com/?size=27&id=88000&format=png"
           />
         </div>
         <div className={styles.content}>
           <div id={styles.priceSumDiv}>
-       <Pricetotal data={data}/>
+       <Pricetotal hotelData={hotelData} totalGuest={totalGuest} totalRoom={totalRoom} promoCode={promoCode} setPayable={setPayable} payable={payable} roomChoice={roomChoice} dateDifference={dateDifference} />
           </div>
         </div>
       </div>
@@ -314,26 +476,27 @@ const Payment = () => {
           </div>
           <img
             className={`${styles.active}`}
-            src="https://img.icons8.com/?size=27&id=88000&format=png"
+            // src="https://img.icons8.com/?size=27&id=88000&format=png"
           />
         </div>
         <div className={styles.content}>
-          <div className={styles.offerDiv}>
-            <div className={`${styles.active}`}>
+          <div className={styles.offerDiv} >
+            <div className={`${styles.active}`} >
               <input
                 name="offer-type"
                 className="form-check-input"
                 id="radio-offer"
                 type="radio"
-                defaultValue="First Hotel"
+                defaultValue="First Booking"
                 defaultChecked=""
                 disc={35}
+                onClick={(e)=>{setPromoCode(e.target.value); }}
               />
               <div>
                 <div>
-                  First Hotel{" "}
+                First Booking{" "}
                   <div>
-                    - ₹ <span id="discount1">817</span>
+                    - ₹ <span id="discount1">500</span>
                   </div>
                 </div>
                 <p>
@@ -351,19 +514,19 @@ const Payment = () => {
                 className="form-check-input"
                 id="radio-offer"
                 type="radio"
-                defaultValue="Alcaza-day"
+                defaultValue="Travelious-day"
                 disc={30}
+                onClick={(e)=>{setPromoCode(e.target.value)}}
               />
               <div>
                 <div>
                 Travelious-day
                   <div>
-                    - ₹ <span id="discount2">817</span>
+                    - ₹ <span id="discount2">{Math.floor( hotelData.cost*0.05)}</span>
                   </div>
                 </div>
                 <p>
-                  Also enjoy FREE Swiggy coupon of FLAT Rs. 125 OFF* upon Check
-                  In{" "}
+                Online Only Offer - Use This Coupon and Get Upto 25% Off!!{" "}
                   <a href="#" style={{ textDecoration: "none" }}>
                     T&amp;C Apply
                   </a>
@@ -376,19 +539,20 @@ const Payment = () => {
                 className="form-check-input"
                 id="radio-offer"
                 type="radio"
-                defaultValue="Tha-Alcaza"
+                defaultValue="WELCOMEMMT"
                 disc={25}
+                onClick={(e)=>{setPromoCode(e.target.value)}}
               />
               <div>
                 <div>
-                 The-Travelious
+                WELCOMEMMT
                   <div>
-                    - ₹ <span id="discount3">817</span>
+                    - ₹ <span id="discount3">1000</span>
                   </div>
                 </div>
                 <p>
-                  Use Tha-Travelious to get instant discount on this hotel booking
-                  celebrating Thalaiva's latest hit{" "}
+               
+                Welcome to Travelious! Here is a special offer for you to book with a credit card.{" "}
                   <a href="#" style={{ textDecoration: "none" }}>
                     T&amp;C Apply
                   </a>

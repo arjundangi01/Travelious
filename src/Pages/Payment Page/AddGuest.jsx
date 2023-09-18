@@ -14,11 +14,11 @@ const AddGuest=()=>{
   </div>
   <div>
     First Name
-    <input type="text" placeholder="Enter First Name" required="" />
+    <input type="text"   placeholder="Enter First Name" pattern=".*\S+.*" required />
   </div>
   <div>
     Last Name
-    <input type="text" placeholder="Enter Last Name" required="" />
+    <input type="text"  placeholder="Enter Last Name" required />
   </div>
 </div>
     )

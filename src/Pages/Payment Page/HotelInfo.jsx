@@ -1,44 +1,58 @@
 import React from "react";
 import styles from "./payment.module.css"
+import { FaCalendarTimes, FaClock, FaHeart, FaLandmark, FaMapMarked, FaMapMarkedAlt, FaPinterest, FaRegClock, FaRegClosedCaptioning, FaSearchLocation, FaShare, FaStar, FaStopwatch, FaTimes, FaUserClock, FaWatchmanMonitoring } from "react-icons/fa";
 const HotelInfo=({hotelData})=>{
-    // const {id,Country,name,url,cost,guestDetails,ratings} = hotelData; 
-    // let stars = ratings
-    // let code = ""
-    // for(let x=0; x<stars; x++){
-    //     code+='<ion-icon name="star"></ion-icon>'
-    // }
-    // for(let x=stars; x<5; x++){
-    //     code+='<ion-icon name="star-outline"></ion-icon>'
-    // }
-    // let random = Math.round(Math.random()*100)+1;
+    const {id,Country,name,url,cost,guestDetails,ratings} = hotelData; 
+    // console.log(ratings)
+    let stars = [];
+      let whiteStar=[]
+    for(var i=1;i<=ratings;i++){
+      stars.push(i)
+    }
+    for(var i=ratings;i<5;i++){
+      whiteStar.push(i)
+    }
+ 
+  
+  
+   
+    let random = Math.round(Math.random()*100)+1;
     return (<>
        <div className={styles.himgDiv}>
-          <img src="https://a0.muscache.com/im/pictures/7cc3c855-f90e-4d0f-9b13-3b5c2a3c4bad.jpg?im_w=720" alt="" />
+          <img src={url} alt="" />
 
         </div>
         <div className={styles.hinfoDiv}>
           <div className={styles.hstars}>
-            ${"{"}code{"}"}
+          {stars.map((e,ind)=>(
+            <FaStar key={ind} style={{color:"ffdd00c0"}}/>
+          ))}
+          {whiteStar.map((e,ind)=>(
+            <FaStar key={ind} style={{color:"grey"}}/>
+          ))}
           </div>
           <div className={styles.htitle}>
-            ${"{"}name{"}"}
+            ${name}
           </div>
           <div className={styles.haddress}>
-            <ion-icon name="location-sharp" />${"{"}Country{"}"}
+            <FaMapMarkedAlt />{Country}
           </div>
           <div className="hreview">
             <span className={styles.bggreen}>
-              ${"{"}stars{"}"}/5
+              {ratings}/5
             </span>
-            ${"{"}random{"}"} Verified Ratings
+            {2} Verified Ratings
           </div>
           <div className={styles.hdeal}>
             <span>
               <ion-icon name="alarm-outline" />
+             <FaStopwatch/>
               Daily Steal Deal
-            </span>{" "}
+             
+            </span>{} 
             <div>
-              Ends in <span id="time" />
+              {/* Ends in */}
+               <span id="time"  />
             </div>
           </div>
         </div>

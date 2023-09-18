@@ -1,4 +1,4 @@
-/* 
+
  
 h2{
     text-align: center;
@@ -6,7 +6,7 @@ h2{
 #imgcont{
   text-align: center;
 }
-img{
+#imgcont>img{
     width: 20%;
     height: 20%;
 }
@@ -193,7 +193,6 @@ img{
   } 
    
 
-
   .icon--order-success svg polyline {
       -webkit-animation: checkmark 0.25s ease-in-out 0.7s backwards;
       animation: checkmark 0.25s ease-in-out 0.7s backwards
@@ -208,6 +207,4 @@ img{
       animation: colored-circle 0.6s ease-in-out 0.7s backwards;
   } 
 
-   #username{
-    color:  red;
-   } */
+ 

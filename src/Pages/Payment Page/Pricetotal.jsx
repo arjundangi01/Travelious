@@ -1,74 +1,84 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./payment.module.css"
-const Pricetotal = ({data}) => {
+import { useSelector } from "react-redux";
+const Pricetotal = ({hotelData,totalGuest,totalRoom,promoCode,setPayable,payable,roomChoice,dateDifference}) => {
+  // const data=useSelector((store)=>{return store});
+  // const{cost}=data;
+
     let {
-        roomStr,
-        basePrice,
-        disc,
-        promo,
-        extra,
-        person
-    } = data;
-    let discP = Math.round((disc / 100) * basePrice)
-    let pad = basePrice - discP
-    let tax = Math.round(0.15 * pad)
-    let payable = pad - tax
-    basePrice = "₹"+basePrice
-    localStorage.setItem("payable",payable)
-    if(extra!=0){
-        extra = 0;
-        // "<div>Insurance opt-in</div> &#8377 "+(19*person)
-        payable+=19*person
-    }
-    else extra = ""
+       cost
+    } = hotelData;
+  
+    let discP = 0;
+    let roomPrice=0;
+if(totalRoom>1){
+    roomPrice=(totalRoom-1)*800
+}
+if(roomChoice=="suite"){
+  roomPrice=roomPrice+700;
+}
+if(dateDifference>=5){
+  roomPrice=roomPrice+((dateDifference-5)*1200);
+}
+    if(promoCode=="First Booking"){discP=500}
+    else if(promoCode=="Travelious-day"){discP=Math.floor( cost*0.05)}
+
+    else if(promoCode=="WELCOMEMMT"){discP=1000}
+    useEffect(() => {  
+      const newPayable = (cost*totalGuest) - discP + Math.ceil((cost*totalGuest) * 0.05)+ roomPrice+ 19 * totalGuest;
+      setPayable(newPayable);
+    }, [cost, discP, totalGuest,roomPrice]);
     return <>
     <div>
       <div>
-        Room Charges (
+      Total Basic Cost (
         <span className={styles.roomstr}>
-          ${"{"}roomStr{"}"}
+         {cost} x {totalGuest} traveller 
         </span>
         )
       </div>
       <div>
-        ${"{"}basePrice{"}"}
+      ₹ {cost*totalGuest}
       </div>
     </div>
     <div>
       <div>
         Total Discounts
         <span id={styles.disc}>
-          ${"{"}disc{"}"}% off
+        upto 25% off
         </span>
       </div>
       <div style={{ color: "green" }}>
-        - ₹ ${"{"}discP{"}"}
+        - ₹ {discP}
       </div>
     </div>
     <div id={styles.applied}>
-      ${"{"}promo{"}"} Applied
+      {promoCode} Applied
     </div>
     <hr />
     <div>
       Price after discounts{" "}
       <span>
-        ₹ ${"{"}pad{"}"}
+        ₹ {(totalGuest*cost)-discP}
       </span>
     </div>
     <div>
-      Taxes &amp; Fees{" "}
+      Taxes &amp; Fees (GST 5.0%){" "}
       <span>
-        ₹ ${"{"}tax{"}"}
+        ₹ {Math.ceil((totalGuest*cost)*0.05)}
       </span>
     </div>
     <div>
-      ${"{"}extra{"}"}
+      Extra charges
+      <span>
+        ₹ {(19*totalGuest)+roomPrice}
+      </span>
     </div>
     <hr />
     <div>
       <h4>Payable Now</h4>
       <h4>
-        ₹ ${"{"}payable{"}"}
+        ₹ {payable} 
       </h4>
     </div>
     <sub style={{ color: "#1ca0e3" }}>Emi starts at ₹ 1000/month</sub>
