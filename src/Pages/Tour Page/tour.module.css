@@ -1,0 +1,315 @@
+.mainCard > .topCover > img {
+    width: 100%;
+    height: 24rem;
+    object-fit: cover;
+}
+.mainCard > .topCover {
+    text-align: center;
+}
+
+.mainCard > .topCover > p {
+    text-align: center;
+    margin-top: -20rem;
+    color:white;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.mainCard > .topCover > p + h6{
+    color: white;
+    font-family: cursive;
+    margin-bottom: 10px ;
+    margin-top: -11px;
+}
+/* .topCover > div{
+    display: flex;
+} */
+.topCover > .location{
+   font-size: 20px;
+   margin-left: -34rem;
+   margin-top: -4rem;
+}
+.topCover  .input{
+    width: 320px;
+    height: 35px;
+    border-radius: 15px;
+    border: none;
+    margin-right: 5px;
+    padding-left: 40px;
+    font-size: 18px;
+}
+.topCover .destinationDate{
+    height: 35px;
+    border-radius: 15px;
+    padding:8px;
+    padding-left: 10px;
+    border: none;
+    margin-right: 5px;
+    /* font-size: 18px; */
+}
+.topCover .searchBtn{
+    width: 100px;
+    height: 33.5px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(249,107,45);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.topCover .searchBtn:hover{
+    color: black;
+    cursor: pointer;
+    /* font-weight: bold;    */
+    border: 1px solid black;
+}
+
+
+.tourCards{  
+    width: 80%;
+    margin: auto; 
+    /* border: 1px solid black;  */
+    margin-top: 200px;
+    
+}
+.singleCard{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+    /* border: 1px solid red; */
+    
+}
+
+/* media queries */
+
+@media (max-width : 500px){
+    .singleCard{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .mainCard > .topCover > p{
+        font-size: 1.8rem;
+    }
+    .topCover  .input{
+        width:300px ;
+    }
+    .topCover > .location{
+        /* color: red; */
+        margin-left: -23rem;
+        margin-top: -4rem;
+    }
+    .filterPart{
+        display: none;
+    }
+    .topCover .destinationDate{
+        margin-top: 4px;
+    }
+    .topCover > .location{
+        margin-left: -16.5rem;
+        margin-top: -8.6rem;
+    }
+    
+}
+
+@media only screen and (max-width : 840px) and (min-width: 500px){
+    .singleCard{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .filterPart{
+        display: none;
+    }
+}
+
+
+.isLoading{
+    display: flex;
+    justify-content: center;
+    font-family: cursive;
+}
+
+
+/* single image card */
+
+.singleCard > div img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    
+  }
+
+  .singleCard > div img:hover{
+    cursor: pointer;
+    opacity: 1;
+	-webkit-animation: flash 2s;
+	animation: flash 2s;
+  }
+    @-webkit-keyframes flash {
+    0% {
+        opacity: .4;
+    }
+    100% {
+        opacity: 1;
+    }
+    }
+    @keyframes flash {
+    0% {
+        opacity: .4;
+    }
+    100% {
+        opacity: 1;
+    }
+    }
+  
+/* signle card whole div */
+
+.singleCard > div{
+    /* border: 1px solid red; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-top-left-radius: 20px ;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.singleCard > div > .nameDiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+}
+.singleCard > div > .hotelIcons{
+    display: flex;
+    padding: 10px;
+    margin-top: -25px;
+    gap: 14px;
+    font-size: 21px;
+}
+.singleCard > div  .rating{
+   font-size: 21px;
+   margin-top: -3px;   
+}
+.tourCards > .destinationTitle{
+    padding: 10px;
+}
+.tourCards > .destinationTitle .title{
+    font-family:cursive;
+    font-weight: bold;
+}
+
+.singleCard  hr{
+    margin-top: -5px;
+}
+.singleCard  hr+p{
+    padding: 10px;
+    margin-top: -18px;
+}
+
+.singleCard > div  > .priceDiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    /* border: 1px solid red; */
+    /* align-items: center; */
+    margin-top: -25px;
+}
+.singleCard > div  > .priceDiv p{
+    font-size: 18px;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.singleCard > div  > .priceDiv button{
+    width: 170px;
+    font-size: 14px;
+    font-weight: bold;
+    height: 32px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(249,107,45);
+    color: white;
+}
+.singleCard > div  > .priceDiv  .arrowBtn{
+    font-size: 20px;
+    margin-top: -2px;
+}
+.singleCard > div  > .priceDiv button:hover{
+    cursor: pointer;
+    color: black;
+}
+.singleCard > div .perPerson{
+    font-size: 12px;
+    padding-left: 10px;
+    margin-top: -20px;
+}
+
+.tourCards > .nextBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px; 
+    gap: 10px; 
+}
+.tourCards > .nextBtn  span{
+   font-family:Georgia, 'Times New Roman', Times, serif ;
+   font-size: 22px;
+}
+.tourCards > .nextBtn > button{
+    width: 100px;
+    font-family: cursive;
+    font-size: 18px;
+    border: none;
+    background-color: plum;
+    color: black;
+    
+}
+.tourCards > .nextBtn > button:hover{
+    background-color: black;
+    color: white;
+}
+
+/* filter part */
+
+.tourCards > .filterPart > div{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    margin-left: 45rem;
+    align-items: center;
+    gap: 20px;
+    /* border: 1px solid black; */
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    /* padding: 10px;
+    border-radius: 10px; */
+    /* border: 1px solid black; */
+    
+    
+}
+.tourCards > .filterPart > div > div{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(249,107,45);
+    font-family: cursive;
+    
+}
+.tourCards > .filterPart > div .fromCountry{
+    width: 180px;
+}
+.tourCards > .filterPart > div .fromCountry select{
+    width: 100%;
+}
+.tourCards > .filterPart > div .sortBy{
+    width: 180px;
+}
+.tourCards > .filterPart > div .sortBy select{
+    width: 100%;
+}
+.tourCards > .filterPart > div .moreFilter{
+    width: 150px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+ 
+
+  
+
