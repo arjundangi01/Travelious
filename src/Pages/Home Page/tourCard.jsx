@@ -18,7 +18,7 @@ const TourCard = ({ id, cost, url, name }) => {
           <p className="align-self-end">per person</p>
         </div>
         <div>
-          <button onClick={()=>{navigate(`/tour/${id}`)}} >Book</button>
+          <button onClick={()=>{navigate(`/tour/tour/${id}`)}} >Book</button>
         </div>
       </div>
     </div>
