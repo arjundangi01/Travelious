@@ -1,0 +1,37 @@
+.container {
+  margin: 2rem 0rem;
+}
+.top {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0rem;
+}
+.price_div * {
+  margin: 0;
+}
+.container button {
+  background-color: #fb7617;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 600;
+}
+.bottom {
+  padding: 1rem 0rem;
+
+  border-bottom: 1px solid grey;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0rem 1rem;
+  color: #24bc9b;
+}
+
+@media (max-width: 455px) {
+  .bottom h5 {
+    font-size: 0.9rem;
+  }
+}

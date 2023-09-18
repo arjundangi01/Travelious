@@ -1,0 +1,39 @@
+.container {
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem 2.2rem;
+}
+.logo_div {
+  width: 30%;
+}
+.footer_menu {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 0rem;
+}
+
+/* ---------------------------------------------------------- */
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+@media (max-width: 855px) {
+  .top {
+    flex-direction: column;
+  }
+  .logo_div {
+    width: 95%;
+  }
+  .top p {
+    margin: 0;
+  }
+  .footer_menu {
+    width: 90%;
+  }
+}

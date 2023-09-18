@@ -1,0 +1,40 @@
+.container{
+    padding: 1rem;
+}
+
+
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px dashed grey;
+}
+.dot{
+    width: 40px;
+    height: 40px;
+    /* background-color: green; */
+    border-radius: 50%;
+}
+.row_left_div{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.row p{
+    margin: 0;
+}
+.row button{
+    background-color: #fb7617;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+.row_right_div{
+    display: flex;
+    gap: 2rem;
+}

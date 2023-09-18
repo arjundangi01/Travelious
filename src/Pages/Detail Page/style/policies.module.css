@@ -1,0 +1,15 @@
+.container{
+    /* border: 1px solid rgba(0, 0, 0, 0.4); */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+.container *{
+    margin: 1rem 0rem;
+}
+.container li{
+   
+}
+.container h2{
+    color: #fb7617;
+}
