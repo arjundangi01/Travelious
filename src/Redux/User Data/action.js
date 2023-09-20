@@ -4,6 +4,9 @@ import axios from "axios";
 export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_LOGIN_ERROR = "USER_LOGIN_ERROR";
+export const USER_SIGNUP = "USER_LOGIN_ERROR";
+export const USER_LOGOUT= "USER_LOGOUT";
+
 
 export const getUserAction = (token) => async (dispatch) => {
   // console.log("gg")
@@ -11,7 +14,7 @@ export const getUserAction = (token) => async (dispatch) => {
     const response = await axios.get(
       `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser?token=${token}`
     );
-    // console.log("res", response.data);
+    console.log("res", response.data);
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
@@ -48,13 +51,25 @@ export const updateBookingStatusAction =
     } catch (error) {}
   };
 
-export const newBookingAction = (newObj) => async (dispatch) => {
-  const id = newObj.id
-  console.log(newObj.id)
+export const newBookingAction = (newObj,id) => async (dispatch) => {
+  // const id = newObj.id
+  // console.log(newObj.id)
   try {
     const response = await axios.patch(
       `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser/${id}`,
       newObj
     );
   } catch (error) {}
+};
+export const newUserSignupAction = (newObj) => async (dispatch) => {
+ 
+  try {
+    const response = await axios.post(
+      `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser/`,
+      newObj
+    );
+  } catch (error) {}
+};
+export const userLogoutAction = () => async (dispatch) => {
+  dispatch({type:USER_LOGOUT})
 };

@@ -8,22 +8,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserAction } from "../../Redux/User Data/action";
 const Profile = () => {
   const [popup, setPopup] = useState(false);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState({ index: "", obj: {} });
   const [update, setUpdate] = useState(true);
   const initialObj = useSelector((store) => store.userReducer);
   const dispatch = useDispatch();
-  const { UserData, bookingHistory } = initialObj;
-  // console.log("user",UserData);
+  const { UserData, bookingHistory,isLoading:loading,token } = initialObj;
+  console.log("initialObj",initialObj);
   useEffect(() => {
     // console.log("first",UserData)
-    dispatch(getUserAction("aby45kuf4ku")).then(() => {
+    dispatch(getUserAction(token)).then(() => {
       console.log("done");
-      setLoading(false);
+     
     });
   }, []);
 
   console.log("bookingHistory", bookingHistory);
+  console.log("bookingHistory");
 
   return (
     <>

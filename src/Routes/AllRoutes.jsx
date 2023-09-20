@@ -20,7 +20,7 @@ const AllRoutes = () => {
       <Route path="/profile" element={<ProfilePrivateRoute> <Profile/> </ProfilePrivateRoute>} >Profile</Route>
       <Route path="/tour" element={<Tour/>} >Tour Page</Route>
       <Route path="/tour/tour/:id" element={<TourDetail/>} >Tour Detail Page</Route>
-      <Route path="/payment" element={<PaymentPrivateRoute> <Payment/> </PaymentPrivateRoute>}  >Payment Page</Route>
+      <Route path="/payment/:id" element={<PaymentPrivateRoute> <Payment/> </PaymentPrivateRoute>}  >Payment Page</Route>
       <Route path="/payment/confirm" element={<PaymentConfirm/>} >Payment Confirm Page</Route>
     </Routes>
   );

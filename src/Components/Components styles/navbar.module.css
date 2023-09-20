@@ -1,7 +1,7 @@
 #navbar {
   background-image: url("https://i.ibb.co/Qj38wS5/NavBG12.png");
   color: rgb(173, 176, 178);
-  padding: 1rem 3rem 1rem 3rem;
+  /* padding: 1rem 3rem 1rem 3rem; */
   /* position: relative; */
 }
 .log_reg_div {
@@ -28,7 +28,7 @@
   width: 50%;
   position: fixed;
   right: 0;
-  top: 79px;
+  top: 68px;
   height: 100%;
   background: #205c35; 
   color: rgb(173, 176, 178);

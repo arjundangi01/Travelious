@@ -13,6 +13,7 @@ import {HiArrowNarrowLeft} from "react-icons/hi"
 import {FaFilter} from "react-icons/fa"
 import { SearchBar } from './Components/SearchBar';
 import {useNavigate} from "react-router-dom"
+import Navbar from '../../Components/navbar';
 
 
 
@@ -85,7 +86,11 @@ const Tour = () => {
   
 
   return (
+    <>
+       <Navbar/>
+  
     <div>
+     
     {/* <h1>Tour Page</h1> */}
     <div className={styles.mainCard}>
 
@@ -215,7 +220,7 @@ const Tour = () => {
           </div>
 
           <div  className={styles.nextBtn}>
-            <button onClick={handlePrev}><HiArrowNarrowLeft className={styles.arrowBtn}/> Pre</button>
+            <button onClick={handlePrev}><HiArrowNarrowLeft className={styles.arrowBtn}/> Prev</button>
             <span>{render}</span>
              <button onClick={handleNext}>Next <HiArrowNarrowRight className={styles.arrowBtn}/></button>
           </div>
@@ -226,7 +231,8 @@ const Tour = () => {
 
     </div>
 
-    </div>
+      </div>
+      </>
   )
 }
 

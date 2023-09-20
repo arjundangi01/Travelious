@@ -2,6 +2,7 @@
     width: 100%;
     height: 24rem;
     object-fit: cover;
+    margin-top: 40px;
 }
 .mainCard > .topCover {
     text-align: center;
@@ -174,7 +175,15 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    /* border: 1px solid #000; */
 
+}
+.nameDiv >span{
+    /* border: 1px solid #000; */
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    /* width: 10px; */
 }
 .singleCard > div > .hotelIcons{
     display: flex;
@@ -185,7 +194,7 @@
 }
 .singleCard > div  .rating{
    font-size: 21px;
-   margin-top: -3px;   
+   margin-top: -0px;   
 }
 .tourCards > .destinationTitle{
     padding: 10px;
@@ -218,10 +227,13 @@
 }
 
 .singleCard > div  > .priceDiv button{
-    width: 170px;
+    width: 180px;
     font-size: 14px;
     font-weight: bold;
     height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     border: none;
     border-radius: 10px;
     background-color: rgb(249,107,45);
@@ -254,6 +266,9 @@
 }
 .tourCards > .nextBtn > button{
     width: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     font-family: cursive;
     font-size: 18px;
     border: none;
@@ -267,7 +282,9 @@
 }
 
 /* filter part */
-
+.tourCards{
+    margin-top: 15rem;
+}
 .tourCards > .filterPart > div{
     display: flex;
     justify-content: center;
@@ -275,6 +292,7 @@
     margin-left: 45rem;
     align-items: center;
     gap: 20px;
+    /* margin-top: 160px; */
     /* border: 1px solid black; */
     /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
     /* padding: 10px;

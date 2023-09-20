@@ -1,4 +1,4 @@
-body {
+/* body {
 	background-color: #185e49;
 	font-family: "fjalla One", sans-serif;
 	display: flex;
@@ -6,7 +6,7 @@ body {
 	justify-content: center;
 	height: 100vh;
 	margin: 0;
-  }
+  } */
   
   .login-container {
 	background-color: #f9ae05;

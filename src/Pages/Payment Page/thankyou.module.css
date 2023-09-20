@@ -5,10 +5,12 @@ h2{
 }
 #imgcont{
   text-align: center;
+  margin-bottom: 10rem;
 }
 #imgcont>img{
     width: 20%;
     height: 20%;
+    margin: auto;
 }
 .firework {
 	position: absolute;

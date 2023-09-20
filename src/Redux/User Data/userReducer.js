@@ -2,19 +2,21 @@ import {
   USER_LOGIN_ERROR,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
 } from "./action";
 
 const initialState = {
+  isAuth:false,
   isLoading: false,
   isError: "",
-  token: "aby45kuf4ku",
-  userTitle: "Arjun Dangi",
+  token: "",
+  userTitle: "",
   email: "",
   UserData: {},
   bookingHistory: [],
 };
 const userReducer = (state = initialState, { type, payload }) => {
-  // console.log("user payload",payload)
+  console.log("user payload",payload)
   switch (type) {
     case USER_LOGIN_REQUEST:
       return { ...state, isLoading: true };
@@ -22,12 +24,24 @@ const userReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
+        isAuth:true,
         token: payload.token,
+        userTitle:payload.data.userName,
         UserData: payload.data,
         bookingHistory: payload.data.bookingHistory,
       };
     case USER_LOGIN_ERROR:
       return { ...state, isLoading: false, isError: payload };
+    case USER_LOGOUT: {
+      return {...state,   isAuth:false,
+        isLoading: false,
+        isError: "",
+        token: "",
+        userTitle: "",
+        email: "",
+        UserData: {},
+        bookingHistory: [],}
+    }
     default:
       return state;
   }

@@ -2,6 +2,7 @@ import React from "react";
 import style from "./style/section1.module.css";
 import boyImg from "./images/Boy.PNG";
 import chianImg from "./images/Chain.PNG";
+import { SearchBar } from "../Tour Page/Components/SearchBar";
 const Section1 = () => {
   return (
     <div className={style.parent}>
@@ -17,7 +18,9 @@ const Section1 = () => {
               sensation ot closeness to nature around you
             </p>
           </div>
-          <div></div>
+          <div>
+         
+          </div>
         </div>
         <div className={style.right}>
           <img src={boyImg} alt="" />

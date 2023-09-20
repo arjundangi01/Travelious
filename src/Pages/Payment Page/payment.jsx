@@ -41,7 +41,7 @@ for(var i=1;i<=totalGuest;i++){
 }
 
 const { UserData } = useSelector((store) => store.userReducer);
-
+console.log("userData in payment",UserData)
 const ratings=4;
   // const hotelData=useSelector((store)=>{return store});
   const { tourObj:hotelData } = useSelector((store) => store.tourDetailReducer);
@@ -144,9 +144,9 @@ const displayRazorpay=async (amount)=>{
       var bookingDate = new Date().toLocaleDateString();
     
       const newObj = {...UserData,bookingHistory:[...UserData.bookingHistory,{...hotelData,status:true,bookingDate,cost:payable}]};
-      console.log("first",newObj)
+      console.log("user id and new obj",newObj,UserData.id)
      
-      dispatch(newBookingAction(newObj))
+      dispatch(newBookingAction(newObj,UserData.id))
       navigate("/payment/confirm")
 
       

@@ -3,7 +3,8 @@ import {ImCancelCircle} from "react-icons/im"
 import style from "./styles/popup.module.css"
 import { useDispatch } from 'react-redux'
 import { updateBookingStatusAction } from '../../Redux/User Data/action'
-const PopUp = ({ UserData,setPopup,selected,setUpdate}) => {
+const PopUp = ({ UserData, setPopup, selected, setUpdate }) => {
+    console.log("selected",selected)
     const dispatch = useDispatch();
   return (
       <div className={style.container} >
@@ -14,13 +15,13 @@ const PopUp = ({ UserData,setPopup,selected,setUpdate}) => {
           <div>
               <h3>Cancelation Policies</h3>
               <ul>
-                  <li></li>
-                  <li></li>
+                  <li>Amount will refunded in 24hrs</li>
+                  <li>20% deduction apply</li>
               </ul>
           </div>
           <div className={style.refund_div}>
               <h4>Refund Amount</h4>
-              <p>₹ 2700</p>
+              <p>₹ 32945</p>
           </div>
           <div className={style.confirm_div}>
               <h5>Still want to continue</h5>
