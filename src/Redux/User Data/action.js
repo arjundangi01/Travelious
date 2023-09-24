@@ -5,23 +5,44 @@ export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_LOGIN_ERROR = "USER_LOGIN_ERROR";
 export const USER_SIGNUP = "USER_LOGIN_ERROR";
-export const USER_LOGOUT= "USER_LOGOUT";
+export const USER_LOGOUT = "USER_LOGOUT";
 
-
-export const getUserAction = (token) => async (dispatch) => {
-  // console.log("gg")
-  try {
-    const response = await axios.get(
-      `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser?token=${token}`
-    );
-    console.log("res", response.data);
-
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: { token, data: response.data[0] },
-    });
-  } catch (error) {}
-};
+export const getUserAction =
+  ({ email, name, nickname, picture, sub }) =>
+  async (dispatch) => {
+    // console.log("gg")
+    try {
+      const response = await axios.get(
+        `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser?token=${email}`
+      );
+      console.log("res", response.data[0]);
+      if (!response.data[0] || response.data[0] == "undefined") {
+        const newObj = {
+          userName: nickname,
+          token:email,
+          data: { email, nickname, picture },
+          bookingHistory: [],
+        }
+        dispatch({
+          type: USER_LOGIN_SUCCESS,
+          payload: newObj,
+        });
+        const response = await axios.post(
+          `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser/`,
+          newObj
+        );
+        
+      } else {
+        dispatch({
+          type: USER_LOGIN_SUCCESS,
+          payload: response.data[0],
+        });
+      }
+      
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 export const updateBookingStatusAction =
   ({ index, obj }) =>
   async (dispatch) => {
@@ -29,10 +50,12 @@ export const updateBookingStatusAction =
     // console.log(obj.token);
     const id = obj.id;
     const newObj = {
-      ...obj
+      ...obj,
     };
     console.log("new", newObj);
-    const refundAmount = parseInt (Math.round(newObj.bookingHistory[index].cost* 80 / 100));
+    const refundAmount = parseInt(
+      Math.round((newObj.bookingHistory[index].cost * 80) / 100)
+    );
     var cancelDate = new Date().toLocaleDateString();
     newObj.bookingHistory[index].status = false;
     newObj.bookingHistory[index]["refundAmount"] = refundAmount;
@@ -51,7 +74,7 @@ export const updateBookingStatusAction =
     } catch (error) {}
   };
 
-export const newBookingAction = (newObj,id) => async (dispatch) => {
+export const newBookingAction = (newObj, id) => async (dispatch) => {
   // const id = newObj.id
   // console.log(newObj.id)
   try {
@@ -62,7 +85,11 @@ export const newBookingAction = (newObj,id) => async (dispatch) => {
   } catch (error) {}
 };
 export const newUserSignupAction = (newObj) => async (dispatch) => {
- 
+  dispatch({
+    type: USER_LOGIN_SUCCESS,
+    payload: newObj,
+  });
+  console.log("called this")
   try {
     const response = await axios.post(
       `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser/`,
@@ -71,5 +98,5 @@ export const newUserSignupAction = (newObj) => async (dispatch) => {
   } catch (error) {}
 };
 export const userLogoutAction = () => async (dispatch) => {
-  dispatch({type:USER_LOGOUT})
+  dispatch({ type: USER_LOGOUT });
 };

@@ -26,9 +26,10 @@ const userReducer = (state = initialState, { type, payload }) => {
         isLoading: false,
         isAuth:true,
         token: payload.token,
-        userTitle:payload.data.userName,
+        userTitle:payload.userName,
         UserData: payload.data,
-        bookingHistory: payload.data.bookingHistory,
+        bookingHistory: payload.bookingHistory,
+        id:payload.id
       };
     case USER_LOGIN_ERROR:
       return { ...state, isLoading: false, isError: payload };

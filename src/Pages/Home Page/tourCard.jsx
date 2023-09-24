@@ -11,10 +11,10 @@ const TourCard = ({ id, cost, url, name }) => {
       <div className={`d-flex justify-content-between ${style.s_card}`} >
         
         <div className={`d-flex align-items-center `}>
-          <h1>
+          <h2>
             {" "}
             <span>₹</span> {cost}/
-          </h1>
+          </h2>
           <p className="align-self-end">per person</p>
         </div>
         <div>

@@ -14,6 +14,7 @@ import {FaFilter} from "react-icons/fa"
 import { SearchBar } from './Components/SearchBar';
 import {useNavigate} from "react-router-dom"
 import Navbar from '../../Components/navbar';
+import Footer from '../../Components/footer';
 
 
 
@@ -227,7 +228,8 @@ const Tour = () => {
 
           
 
-        </div>
+          </div>
+          <Footer/>
 
     </div>
 

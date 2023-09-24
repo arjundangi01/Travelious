@@ -16,7 +16,7 @@ const Section2 = ({ data }) => {
         </div>
         <div className={style.bottom}>
           {data.map((ele) => (
-              <TourCard {...ele}  />
+              <TourCard key={ele.id} {...ele}  />
           ))}
         </div>
       </div>

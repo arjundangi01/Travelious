@@ -1,7 +1,7 @@
 .parent{
-    width: 60%;
+    width: 70%;
     margin: auto;
-    margin-top: 4rem;
+    margin-top: 8rem;
     position: relative;
     /* background-color: aliceblue; */
 }
@@ -68,24 +68,75 @@
     animation: skeleton-animation 1.25s ease-in-out infinite;
   }
   
-  
-  
-  /* Not interesting CSS */
-  
-  /* .container {
-  
-    background-color: #f7f7f7;
-    box-shadow: 
-       2px 2px 6px rgba(100,100,100,.5),
-       0 0 6px rgba(100,100,100,.5);
-    padding: 10px;
-    width: 500px;
-    height: 150px;
-  } */
+ 
    .info {
     display: grid; 
     width:100%;
     grid-template-rows: 40px 30px 20px; 
     grid-row-gap: 10px;
     padding: 20px 0 20px 0;
+  }
+
+
+  @media (min-width:1200px) and (max-width:1690px) {
+    .animation_div img{
+        margin-top: 0rem;
+       
+    }
+  }
+  @media (min-width:900px) and (max-width:1200px) {
+    .parent{
+        width: 90%;
+    }
+    .animation_div img{
+        margin-top: 0rem;
+       
+    }
+  }
+  @media (min-width:500px) and (max-width:950px) {
+    .parent{
+        width: 95%;
+    }
+    .profile_card_div{
+        width: 100%;
+    
+        /* height: 100%; */
+    }
+    .profile_section {
+        flex-direction: column;
+       
+    }
+    .animation_div img{
+        margin-top: 2rem;
+       
+    }
+    .animation_div{    
+        width: 400px;            
+    
+    }
+  }
+  @media  (max-width:500px) {
+    .parent{
+        width: 95%;
+    }
+    .profile_card_div{
+        width: 100%;
+    
+        /* height: 100%; */
+    }
+    .profile_section {
+        flex-direction: column;
+       
+    }
+    .animation_div{    
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+        margin: auto;     
+    
+    }
+    .animation_div img{
+        margin-top: 1.5rem;
+       
+    }
   }
