@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import style from "./styles/history.module.css";
-const History = ({ setPopup, ele,setSelected,index,userObj }) => {
+const History = ({ setPopup, ele,setSelected,index,userObj,initialObj }) => {
   // console.log(ele)
   const [status, setStatus] = useState(ele.status);
   return (
@@ -24,7 +24,7 @@ const History = ({ setPopup, ele,setSelected,index,userObj }) => {
                 <h2>{ ele.name}</h2>
                 <p>{ele.title}</p>
                 {ele.status && <button onClick={() => {
-                  setSelected({index:index,obj:userObj})
+                  setSelected({index:index,obj:initialObj} )
                   setPopup(true)
                 }} >Cancel</button>}
               </div>

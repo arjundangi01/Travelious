@@ -10,6 +10,7 @@ import {
   newUserSignupAction,
   userLogoutAction,
 } from "../Redux/User Data/action";
+import { nameUserAction } from "../Redux/name/action";
 const Navbar = () => {
   const dispatch = useDispatch();
   // const [login, setLogin] = useState(true);
@@ -23,27 +24,30 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [userName, setUserName] = useState(null);
   const [token, setToken] = useState(null);
+ 
   // auth
   const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
   // console.log(user, loginWithRedirect);
-  useEffect(() => {
-    if (user) {
-      const { email, name, nickname, picture, sub } = user;
-     
-      setUserName(nickname);
-      setToken(sub);
-      dispatch(getUserAction(user))
-      // dispatch(
-      //   newUserSignupAction({
-      //     userName: nickname,
-      //     token:email,
-      //     data: { email, nickname, picture },
-      //     bookingHistory: [],
-      //   })
-      // );
-      // console.log("done sign");
-    }
-  }, [user]);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     console.log(user)
+  //     if (user) {
+  //     const { email, name, nickname, picture, sub } = user;
+
+  //       setUserName(nickname)
+  //       console.log(nickname)
+  //       //  dispatch(nameUserAction(user))
+  //      }
+  //   },5000)
+  // },[])
+
+  const onLogin =  () => {
+
+      loginWithRedirect();
+
+  }
+
 
   return (
     <nav className="navbar navbar-expand-lg fixed-top " id={style.navbar}>
@@ -114,7 +118,7 @@ const Navbar = () => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    {userName}
+                    {isAuthenticated?(user.nickname):""}
                   </a>
                   <ul className="dropdown-menu">
                     <li>
@@ -147,9 +151,7 @@ const Navbar = () => {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link
-                    onClick={() => {
-                      loginWithRedirect();
-                    }}
+                    onClick={onLogin}
                     className="nav-link active text-light"
                     aria-current="page"
                     href="#"
@@ -161,9 +163,7 @@ const Navbar = () => {
             )}
             {!isAuthenticated && (
               <button
-                onClick={() => {
-                  loginWithRedirect();
-                }}
+                onClick={ onLogin }
                 className={`btn btn-outline-success ${style.registered_button}`}
                 type="submit"
               >

@@ -44,8 +44,7 @@ export const getUserAction =
       console.log("error", error);
     }
   };
-export const updateBookingStatusAction =
-  ({ index, obj }) =>
+export const updateBookingStatusAction =  ({ index, obj }) =>
   async (dispatch) => {
     // console.log("gg", selected)
     // console.log(obj.token);
@@ -61,12 +60,16 @@ export const updateBookingStatusAction =
     newObj.bookingHistory[index].status = false;
     newObj.bookingHistory[index]["refundAmount"] = refundAmount;
     newObj.bookingHistory[index]["cancelDate"] = cancelDate;
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: { token: obj.token, data: newObj },
-    });
+    // dispatch({
+    //   type: USER_LOGIN_SUCCESS,
+    //   payload: newobj,
+    // });
     // console.log(obj, id);
-    // console.log(newObj)
+    const newObj2 = { ...obj };
+    newObj2.bookingHistory[index].status = false;
+    newObj2.bookingHistory[index]["refundAmount"] = refundAmount;
+    newObj2.bookingHistory[index]["cancelDate"] = cancelDate;
+    console.log( "newObj", newObj)
     try {
       const response = await axios.patch(
         `https://underwear-pig.cyclic.cloud/traveliousUser/${id}`,
