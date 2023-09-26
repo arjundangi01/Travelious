@@ -7,13 +7,14 @@ export const USER_LOGIN_ERROR = "USER_LOGIN_ERROR";
 export const USER_SIGNUP = "USER_LOGIN_ERROR";
 export const USER_LOGOUT = "USER_LOGOUT";
 
+
 export const getUserAction =
   ({ email, name, nickname, picture, sub }) =>
   async (dispatch) => {
     // console.log("gg")
     try {
       const response = await axios.get(
-        `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser?token=${email}`
+        `https://underwear-pig.cyclic.cloud/traveliousUser?token=${email}`
       );
       console.log("res", response.data[0]);
       if (!response.data[0] || response.data[0] == "undefined") {
@@ -28,7 +29,7 @@ export const getUserAction =
           payload: newObj,
         });
         const response = await axios.post(
-          `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser/`,
+          `https://underwear-pig.cyclic.cloud/traveliousUser/`,
           newObj
         );
         
@@ -68,7 +69,7 @@ export const updateBookingStatusAction =
     // console.log(newObj)
     try {
       const response = await axios.patch(
-        `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser/${id}`,
+        `https://underwear-pig.cyclic.cloud/traveliousUser/${id}`,
         newObj
       );
     } catch (error) {}
@@ -79,7 +80,7 @@ export const newBookingAction = (newObj, id) => async (dispatch) => {
   // console.log(newObj.id)
   try {
     const response = await axios.patch(
-      `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser/${id}`,
+      `https://underwear-pig.cyclic.cloud/traveliousUser/${id}`,
       newObj
     );
   } catch (error) {}
@@ -92,7 +93,7 @@ export const newUserSignupAction = (newObj) => async (dispatch) => {
   console.log("called this")
   try {
     const response = await axios.post(
-      `https://fair-teal-worm-gown.cyclic.cloud/traveliousUser/`,
+      `https://underwear-pig.cyclic.cloud/traveliousUser/`,
       newObj
     );
   } catch (error) {}

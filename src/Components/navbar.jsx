@@ -16,7 +16,7 @@ const Navbar = () => {
   const { isAuth: login, userTitle } = useSelector(
     (store) => store.userReducer
   );
-  console.log(login);
+  // console.log(login);
   const onLogout = () => {
     dispatch(userLogoutAction());
   };
@@ -25,7 +25,7 @@ const Navbar = () => {
   const [token, setToken] = useState(null);
   // auth
   const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
-  console.log(user, loginWithRedirect);
+  // console.log(user, loginWithRedirect);
   useEffect(() => {
     if (user) {
       const { email, name, nickname, picture, sub } = user;
@@ -41,18 +41,18 @@ const Navbar = () => {
       //     bookingHistory: [],
       //   })
       // );
-      console.log("done sign");
+      // console.log("done sign");
     }
   }, [user]);
 
   return (
-    <nav class="navbar navbar-expand-lg fixed-top " id={style.navbar}>
-      <div class="container-fluid ps-lg-5 pe-lg-5 pe-md-0 ps-md-0  ">
-        <Link to="/" class="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-lg fixed-top " id={style.navbar}>
+      <div className="container-fluid ps-lg-5 pe-lg-5 pe-md-0 ps-md-0  ">
+        <Link to="/" className="navbar-brand" href="#">
           <img src={logoImg} alt="" />
         </Link>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -60,41 +60,41 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse  " id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-75 d-flex justify-content-around">
-            <li class="nav-item">
+        <div className="collapse navbar-collapse  " id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 w-75 d-flex justify-content-around">
+            <li className="nav-item">
               <Link
                 to="/tour"
-                class="nav-link active text-light"
+                className="nav-link active text-light"
                 aria-current="page"
                 href="#"
               >
                 Discover
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a
-                class="nav-link active text-light"
+                className="nav-link active text-light"
                 aria-current="page"
                 href="#"
               >
                 Service
               </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a
-                class="nav-link active text-light text-light"
+                className="nav-link active text-light text-light"
                 aria-current="page"
                 href="#"
               >
                 Community
               </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a
-                class="nav-link active text-light"
+                className="nav-link active text-light"
                 aria-current="page"
                 href="#"
               >
@@ -103,12 +103,12 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <form class=" gap-5 d-lg-flex d-sm-block me-5 " role="search">
+          <form className=" gap-5 d-lg-flex d-sm-block me-5 " role="search">
             {isAuthenticated && (
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item dropdown">
                   <a
-                    class="nav-link text-light dropdown-toggle"
+                    className="nav-link text-light dropdown-toggle"
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -116,11 +116,11 @@ const Navbar = () => {
                   >
                     {userName}
                   </a>
-                  <ul class="dropdown-menu">
+                  <ul className="dropdown-menu">
                     <li>
                       <Link
                         to={`/profile/${token}`}
-                        class="dropdown-item"
+                        className="dropdown-item"
                         href="#"
                       >
                         Profile
@@ -128,12 +128,12 @@ const Navbar = () => {
                     </li>
 
                     <li>
-                      <hr class="dropdown-divider" />
+                      <hr className="dropdown-divider" />
                     </li>
                     <li>
                       <a
                         onClick={() => logout()}
-                        class="dropdown-item"
+                        className="dropdown-item"
                         href="#"
                       >
                         Logout
@@ -144,13 +144,13 @@ const Navbar = () => {
               </ul>
             )}
             {!isAuthenticated && (
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
                   <Link
                     onClick={() => {
                       loginWithRedirect();
                     }}
-                    class="nav-link active text-light"
+                    className="nav-link active text-light"
                     aria-current="page"
                     href="#"
                   >
