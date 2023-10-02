@@ -24,23 +24,15 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [userName, setUserName] = useState(null);
   const [token, setToken] = useState(null);
+  const [check, setCheck] = useState(false);
  
   // auth
   const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
   // console.log(user, loginWithRedirect);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     console.log(user)
-  //     if (user) {
-  //     const { email, name, nickname, picture, sub } = user;
-
-  //       setUserName(nickname)
-  //       console.log(nickname)
-  //       //  dispatch(nameUserAction(user))
-  //      }
-  //   },5000)
-  // },[])
+  if (isAuthenticated) {
+    // setCheck(!check)
+  }
+  
 
   const onLogin =  () => {
 
@@ -123,7 +115,7 @@ const Navbar = () => {
                   <ul className="dropdown-menu">
                     <li>
                       <Link
-                        to={`/profile/${token}`}
+                        to={`/profile`}
                         className="dropdown-item"
                         href="#"
                       >

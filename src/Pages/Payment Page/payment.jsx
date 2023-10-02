@@ -12,6 +12,7 @@ import { newBookingAction } from "../../Redux/User Data/action";
 import Navbar from "../../Components/navbar";
 import Footer from "../../Components/footer";
 // import { Navbar } from "react-bootstrap";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Payment = () => {
   const [totalGuest, setTotalGuest] = useState(1);
@@ -23,6 +24,7 @@ const Payment = () => {
   const [roomChoice, setRoomChoice] = useState("");
   const [dateDifference, setDateDifference] = useState(0);
   const dispatch = useDispatch();
+  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
   const guestMap = [];
   const navigate = useNavigate();
@@ -189,8 +191,11 @@ const Payment = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
+    
     if (validateInputs()) {
+      if (!isAuthenticated) {
+        loginWithRedirect()
+      }
       displayRazorpay(payable);
     } else {
       alert("Please fill in all required fields.");

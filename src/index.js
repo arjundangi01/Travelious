@@ -24,7 +24,7 @@ root.render(
   domain="dev-qxrrheycews4su13.us.auth0.com"
     clientId="L5PrTfagLjmfF0jVTfXCAciBn1t4nTxc"
     authorizationParams={{
-      redirect_uri: window.location.origin
+      redirect_uri: `${window.location.origin}/profile`
     }}
   >
     {" "}
