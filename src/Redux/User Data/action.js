@@ -14,7 +14,7 @@ export const getUserAction =
     // console.log("gg")
     try {
       const response = await axios.get(
-        `https://underwear-pig.cyclic.cloud/traveliousUser?token=${email}`
+        `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser?token=${email}`
       );
       console.log("res", response.data[0]);
       if (!response.data[0] || response.data[0] == "undefined") {
@@ -29,7 +29,7 @@ export const getUserAction =
           payload: newObj,
         });
         const response = await axios.post(
-          `https://underwear-pig.cyclic.cloud/traveliousUser/`,
+          `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser/`,
           newObj
         );
         
@@ -72,7 +72,7 @@ export const updateBookingStatusAction =  ({ index, obj }) =>
     console.log( "newObj", newObj)
     try {
       const response = await axios.patch(
-        `https://underwear-pig.cyclic.cloud/traveliousUser/${id}`,
+        `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser/${id}`,
         newObj
       );
     } catch (error) {}
@@ -83,7 +83,7 @@ export const newBookingAction = (newObj, id) => async (dispatch) => {
   // console.log(newObj.id)
   try {
     const response = await axios.patch(
-      `https://underwear-pig.cyclic.cloud/traveliousUser/${id}`,
+      `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser/${id}`,
       newObj
     );
   } catch (error) {}
@@ -96,7 +96,7 @@ export const newUserSignupAction = (newObj) => async (dispatch) => {
   console.log("called this")
   try {
     const response = await axios.post(
-      `https://underwear-pig.cyclic.cloud/traveliousUser/`,
+      `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser/`,
       newObj
     );
   } catch (error) {}

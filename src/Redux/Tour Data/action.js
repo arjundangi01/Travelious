@@ -9,7 +9,7 @@ export const UPDATE_TOUR_DATA = "UPDATE_TOUR_DATA";
 //Add tour
 export const addTour = (render, sortOrder = 'asc', country = '') => async (dispatch) => {
     try {
-      let apiUrl = `https://underwear-pig.cyclic.cloud/tours?_limit=12&_page=${render}&_sort=cost&_order=${sortOrder}`;
+      let apiUrl = `https://dull-puce-crocodile-wear.cyclic.app/tours?_limit=12&_page=${render}&_sort=cost&_order=${sortOrder}`;
       
       if (country) {
         apiUrl += `&Country=${country}`;
