@@ -221,9 +221,9 @@ const Tour = () => {
           </div>
 
           <div  className={styles.nextBtn}>
-            <button onClick={handlePrev}><HiArrowNarrowLeft className={styles.arrowBtn}/> Prev</button>
+            <button disabled={render==1} onClick={handlePrev}><HiArrowNarrowLeft className={styles.arrowBtn}/> Prev</button>
             <span>{render}</span>
-             <button onClick={handleNext}>Next <HiArrowNarrowRight className={styles.arrowBtn}/></button>
+             <button disabled={render==2} onClick={handleNext}>Next <HiArrowNarrowRight className={styles.arrowBtn}/></button>
           </div>
 
           

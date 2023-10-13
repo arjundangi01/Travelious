@@ -57,6 +57,7 @@ input::-webkit-inner-spin-button {
     background-color: white;
     width: 90%;
     overflow: hidden;
+   
     /* /* display: flex; */
 }
 
@@ -100,6 +101,7 @@ input::-webkit-inner-spin-button {
 
 #main_b>.left_div {
     width: 66%;
+   
     /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
 
@@ -402,6 +404,7 @@ input::-webkit-inner-spin-button {
     border-radius: 50px;
 }
 .hotel_info .hstars{
+    display: flex;
     color: goldenrod; 
     margin-bottom: -10px;
 }
@@ -682,7 +685,8 @@ input::-webkit-inner-spin-button {
     }
 
     #main_b>.left_div {
-        width: 90%;
+        width: 100%;
+        
     }
 
     #main_b>.right_div {
@@ -691,6 +695,7 @@ input::-webkit-inner-spin-button {
         width: 90%;
         margin-top: 3%;
     }
+    
 
     #main_b>div>div>.insurance>div>div:last-child>div:last-child {
         flex-direction: column;
@@ -720,5 +725,12 @@ input::-webkit-inner-spin-button {
         flex-direction: column !important;
         justify-content: flex-start !important;
         align-items: center !important;
+    }
+    #main_b>div>div {
+        
+        width: 100%;
+      
+       
+        /* /* display: flex; */
     }
 } 

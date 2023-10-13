@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import style from "./style/banner.module.css";
 const Banner = ({ data }) => {
   const [imgUrl, setUrl] = useState(data.url);
-  
+  console.log( "url", imgUrl)
 
   return (
     <div className={style.parent}>
       <div className={style.container}>
         <div className={style.banner}>
-          <img src={imgUrl} alt="" />
+          <img src={imgUrl ? imgUrl: data.url} alt="" />
         </div>
         <div className={style.smallsdiv}>
           <div

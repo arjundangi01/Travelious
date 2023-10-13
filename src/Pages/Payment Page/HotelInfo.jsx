@@ -2,8 +2,9 @@ import React from "react";
 import styles from "./payment.module.css"
 import { FaCalendarTimes, FaClock, FaHeart, FaLandmark, FaMapMarked, FaMapMarkedAlt, FaPinterest, FaRegClock, FaRegClosedCaptioning, FaSearchLocation, FaShare, FaStar, FaStopwatch, FaTimes, FaUserClock, FaWatchmanMonitoring } from "react-icons/fa";
 const HotelInfo=({hotelData})=>{
-    const {id,Country,name,url,cost,guestDetails,ratings} = hotelData; 
-    // console.log(ratings)
+    const {id,Country,name,url,cost,guestDetails} = hotelData; 
+  // console.log(ratings)
+  let ratings = 4;
     let stars = [];
       let whiteStar=[]
     for(var i=1;i<=ratings;i++){
@@ -32,7 +33,7 @@ const HotelInfo=({hotelData})=>{
           ))}
           </div>
           <div className={styles.htitle}>
-            ${name}
+            {name}
           </div>
           <div className={styles.haddress}>
             <FaMapMarkedAlt />{Country}
