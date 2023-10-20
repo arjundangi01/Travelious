@@ -5,7 +5,8 @@ export const GET_SINGLE_TOUR_REQUEST = "GET_SINGLE_TOUR_REQUEST"
 
 export const singleTour = (id) => async (dispatch) => {
     try {
-        const response = await axios.get(`https://dull-puce-crocodile-wear.cyclic.app/tours/${id}`)
+        console.log(id)
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/travelious_tour/${id}`)
         console.log(response)
         dispatch({type:GET_SINGLE_TOUR_REQUEST,payload:response.data})
     } catch (error) {

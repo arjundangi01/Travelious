@@ -16,8 +16,8 @@ const PriceCard = ({ tourObj }) => {
     // console.log("first",newObj)
    
     // dispatch(newBookingAction(newObj))
-    navigate(`/payment/${tourObj.id}`)
-    dispatch(moveToPaymentAction(tourObj.id))
+    navigate(`/payment/${tourObj._id}`)
+    dispatch(moveToPaymentAction(tourObj._id))
   };
   useEffect(() => {
     // dispatch(getUserAction("aby45kuf4ku"));

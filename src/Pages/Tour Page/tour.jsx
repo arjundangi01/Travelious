@@ -24,6 +24,7 @@ const Tour = () => {
   const[render,setRender] = useState(1)
   const[sortBy,setSortBy] = useState("")
   const[sortbycountry,setSortByCountry] = useState("")
+  // const[showFilter,setShowFilter] = useState(true)
   const navigate = useNavigate()
 
   const dispatch = useDispatch();
@@ -35,39 +36,36 @@ const Tour = () => {
   // console.log(loading);
 
   useEffect(() => {
-    dispatch(addTour(render))
-  },[dispatch,render])
+    dispatch(addTour(render,sortBy,sortbycountry))
+  },[render,sortBy,sortbycountry])
 
   function handleNext(e) {
     e.preventDefault()
     setRender(prev => prev + 1)
-    dispatch(addTour(render + 1)) // Pass the updated render value
+    // dispatch(addTour(render + 1,sortBy,sortbycountry)) 
   }
   function handlePrev(e){
     e.preventDefault()
     setRender(prev => prev - 1)
-    dispatch(addTour(render - 1))
+    // dispatch(addTour(render - 1,sortBy,sortbycountry))
   }
 
   function handleSortChange(e) {
     e.preventDefault();
     const selectedSort = e.target.value;
     setSortBy(selectedSort);
-  
-    if (selectedSort === "LtoH") {
-      dispatch(addTour(render, "asc")); // Low to High
-    } else if (selectedSort === "HtoL") {
-      dispatch(addTour(render, "desc")); // High to Low
-    }
+    setRender(1)
+    
   }
 
   function handleSortCountry(e) {
     e.preventDefault();
     const selectedCountry = e.target.value;
     setSortByCountry(selectedCountry);
+    setRender(1)
     // console.log(selectedCountry);
   
-    dispatch(addTour(render, sortBy, selectedCountry));
+    // dispatch(addTour(render, sortBy, selectedCountry));
   }
 
   // hello world
@@ -79,8 +77,8 @@ const Tour = () => {
 //       dispatch(addTour(render, sortBy, search));
 //   }
 
-  function handleDetails(id){
-    navigate(`tour/${id}`)
+  function handleDetails(tourId){
+    navigate(`tour/${tourId}`)
   }
 
  
@@ -111,7 +109,7 @@ const Tour = () => {
           </div>
           <SlLocationPin type='icon' className={styles.location}/> */}
 
-          <SearchBar/>
+          <SearchBar setSortByCountry={setSortByCountry}  />
          
       </div>
 
@@ -141,8 +139,8 @@ const Tour = () => {
           <h6>Sort By</h6>
           <select onChange={handleSortChange} value={sortBy}>
             <option value="">Select</option>
-            <option value="LtoH">Low to High</option>
-            <option value="HtoL">High to Low</option>
+            <option value="asc">Low to High</option>
+            <option value="desc">High to Low</option>
         </select>
           </div>
           {/* // */}
@@ -181,7 +179,7 @@ const Tour = () => {
             {
               tourData?.map((ele) => (
                 <div key={ele.id}>
-                    <img onClick={()=> {handleDetails(ele.id)}} src={ele.url} alt="" />
+                    <img onClick={()=> {handleDetails(ele._id)}} src={ele.url} alt="" />
                     
                     <div className={styles.nameDiv}>
                         <h6>{ele.name}</h6>
@@ -206,7 +204,7 @@ const Tour = () => {
 
                       <p>₹ {ele.cost}</p>
 
-                      <button onClick={()=> {handleDetails(ele.id)}}>Customize & Book <HiArrowNarrowRight className={styles.arrowBtn}/> 
+                      <button onClick={()=> {handleDetails(ele._id)}}>Customize & Book <HiArrowNarrowRight className={styles.arrowBtn}/> 
 
                       </button>
 

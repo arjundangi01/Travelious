@@ -1,4 +1,5 @@
 import {
+  GET_USER,
   USER_LOGIN_ERROR,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -6,7 +7,7 @@ import {
 } from "./action";
 
 const initialState = {
-  isAuth:false,
+  isAuthenticated: false,
   isLoading: false,
   isError: "",
   token: "",
@@ -16,7 +17,7 @@ const initialState = {
   bookingHistory: [],
 };
 const userReducer = (state = initialState, { type, payload }) => {
-  console.log("user payload",payload)
+  console.log("user payload", payload);
   switch (type) {
     case USER_LOGIN_REQUEST:
       return { ...state, isLoading: true };
@@ -24,24 +25,21 @@ const userReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
-        isAuth:true,
-        token: payload.token,
-        userTitle:payload.userName,
-        UserData: payload.data,
-        bookingHistory: payload.bookingHistory,
-        id:payload.id
+        isAuthenticated: true,
+        token: payload.userToken,
       };
-    case USER_LOGIN_ERROR:
-      return { ...state, isLoading: false, isError: payload };
-    case USER_LOGOUT: {
-      return {...state,   isAuth:false,
-        isLoading: false,
-        isError: "",
-        token: "",
-        userTitle: "",
-        email: "",
-        UserData: {},
-        bookingHistory: [],}
+    case USER_LOGOUT:
+      return initialState
+   
+    case GET_USER: {
+      return {
+        ...state,
+        userTitle: payload.userData.userName,
+        UserData: payload.userData,
+        email: payload.userData.email,
+        isAuthenticated: true,
+        bookingHistory:payload.bookingHistory
+      };
     }
     default:
       return state;

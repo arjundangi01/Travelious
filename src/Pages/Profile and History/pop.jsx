@@ -6,6 +6,7 @@ import { updateBookingStatusAction } from '../../Redux/User Data/action'
 const PopUp = ({ UserData, setPopup, selected, setUpdate }) => {
     console.log("selected",selected)
     const dispatch = useDispatch();
+    const refundAmount = parseInt(Math.round(selected.obj.cost*80/100)) 
   return (
       <div className={style.container} >
           <div className={style.heading} >
@@ -21,11 +22,11 @@ const PopUp = ({ UserData, setPopup, selected, setUpdate }) => {
           </div>
           <div className={style.refund_div}>
               <h4>Refund Amount</h4>
-              <p>₹ 32945</p>
+              <p>₹ {refundAmount}</p>
           </div>
           <div className={style.confirm_div}>
               <h5>Still want to continue</h5>
-              <button onClick={() => { setUpdate(prev => !prev); dispatch(updateBookingStatusAction(selected)); setPopup(false); }} className={style.yes_btn}>Yes</button>
+              <button onClick={() => { setUpdate(prev => !prev); dispatch(updateBookingStatusAction(selected,refundAmount)); setPopup(false); }} className={style.yes_btn}>Yes</button>
               <button onClick={()=>setPopup(false)} className={style.no_btn}>No</button>
           </div>
     </div>

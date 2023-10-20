@@ -3,43 +3,34 @@ import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Components styles/navbar.module.css";
 import { LuMenuSquare } from "react-icons/lu";
 import logoImg from "../Images/LOGO.PNG";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  USER_LOGOUT,
   getUserAction,
+  getUserDetailAction,
   newUserSignupAction,
   userLogoutAction,
 } from "../Redux/User Data/action";
 import { nameUserAction } from "../Redux/name/action";
 const Navbar = () => {
   const dispatch = useDispatch();
-  // const [login, setLogin] = useState(true);
-  const { isAuth: login, userTitle } = useSelector(
+  const navigate = useNavigate()
+  const { isAuthenticated, userTitle, email } = useSelector(
     (store) => store.userReducer
   );
-  // console.log(login);
-  const onLogout = () => {
-    dispatch(userLogoutAction());
-  };
-  const [toggle, setToggle] = useState(false);
-  const [userName, setUserName] = useState(null);
-  const [token, setToken] = useState(null);
-  const [check, setCheck] = useState(false);
- 
-  // auth
-  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
-  // console.log(user, loginWithRedirect);
-  if (isAuthenticated) {
-    // setCheck(!check)
-  }
   
+ 
+ 
+  useEffect(() => {
+    dispatch(getUserDetailAction());
+  }, []);
 
-  const onLogin =  () => {
-
-      loginWithRedirect();
-
-  }
-
+  const onLogout = () => {
+    localStorage.removeItem('traveliousUserToken')
+    dispatch(userLogoutAction())
+    navigate('/')
+  };
 
   return (
     <nav className="navbar navbar-expand-lg fixed-top " id={style.navbar}>
@@ -110,15 +101,11 @@ const Navbar = () => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    {isAuthenticated?(user.nickname):""}
+                    {isAuthenticated ? userTitle : ""}
                   </a>
                   <ul className="dropdown-menu">
                     <li>
-                      <Link
-                        to={`/profile`}
-                        className="dropdown-item"
-                        href="#"
-                      >
+                      <Link to={`/profile`} className="dropdown-item" href="#">
                         Profile
                       </Link>
                     </li>
@@ -128,7 +115,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <a
-                        onClick={() => logout()}
+                        onClick={() => onLogout()}
                         className="dropdown-item"
                         href="#"
                       >
@@ -143,10 +130,9 @@ const Navbar = () => {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link
-                    onClick={onLogin}
                     className="nav-link active text-light"
                     aria-current="page"
-                    href="#"
+                    to="/signup"
                   >
                     Login
                   </Link>
@@ -154,13 +140,14 @@ const Navbar = () => {
               </ul>
             )}
             {!isAuthenticated && (
-              <button
-                onClick={ onLogin }
-                className={`btn btn-outline-success ${style.registered_button}`}
-                type="submit"
-              >
-                Register
-              </button>
+              <Link to="/signup">
+                <button
+                  className={`btn btn-outline-success ${style.registered_button}`}
+                  type="submit"
+                >
+                  Register
+                </button>
+              </Link>
             )}
           </form>
         </div>

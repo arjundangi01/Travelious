@@ -6,11 +6,16 @@ import Section2 from "./section2";
 import Section4 from "./section4";
 import Section5 from "./section5";
 import Section6 from "./section6";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../Components/footer";
+import { getUserDetailAction } from "../../Redux/User Data/action";
 const Home = () => {
   const { homePage } = useSelector((store) => store.tourDetailReducer);
   console.log(homePage);
+  const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(getUserDetailAction());
+  // }, []);
   return (
     <>
       <Navbar />

@@ -12,9 +12,10 @@
         margin: auto;
     }
   }
- @media (min-width:900px) and (max-width:1100px) {
+ @media  (max-width:1100px) {
     .parent {
         width: 95%;
         margin: auto;
     }
   }
+

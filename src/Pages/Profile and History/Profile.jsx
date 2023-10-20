@@ -15,34 +15,8 @@ const Profile = () => {
   const [update, setUpdate] = useState(true);
   const initialObj = useSelector((store) => store.userReducer);
   const dispatch = useDispatch();
-  const { UserData, bookingHistory, isLoading: loading, token } = initialObj;
-  console.log("initialObj", initialObj);
-  const { user, loginWithRedirect, isAuthenticated, logout, isLoading } =
-    useAuth0();
+  const { UserData, bookingHistory, isLoading } = initialObj;
 
-  useEffect(() => {
-    if (user == "undefined") {
-    }
-    if (user) {
-      const { email, name, nickname, picture, sub } = user;
-
-      // setUserName(nickname);
-      // setToken(sub);
-      dispatch(getUserAction(user));
-      // dispatch(
-      //   newUserSignupAction({
-      //     userName: nickname,
-      //     token:email,
-      //     data: { email, nickname, picture },
-      //     bookingHistory: [],
-      //   })
-      // );
-      // console.log("done sign");
-    }
-  }, [user]);
-
-  console.log("bookingHistory", bookingHistory);
-  console.log("bookingHistory");
 
   return (
     <>
@@ -68,7 +42,7 @@ const Profile = () => {
             <div className={style.heading_div}>
               <h3>Booking History</h3>
             </div>
-            {loading ? (
+            {isLoading ? (
               <div>
                 <div className={style.info}>
                   <div className={style.skeleton}></div>
@@ -95,7 +69,7 @@ const Profile = () => {
                   userObj={UserData}
                   ele={ele}
                   setPopup={setPopup}
-                  initialObj={initialObj}
+                  initialObj={ele}
                 />
               ))
             )}

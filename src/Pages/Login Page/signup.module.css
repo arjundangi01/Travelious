@@ -1,3 +1,4 @@
-.parent {
-  background-image: url("https://images.unsplash.com/photo-1528127269322-539801943592?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+.parent{
+    width: clamp(40%,500px,100%);
+    margin: auto;
 }

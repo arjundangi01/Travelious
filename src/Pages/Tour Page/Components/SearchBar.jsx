@@ -4,7 +4,7 @@ import styles from "../tour.module.css"
 import { useDispatch } from 'react-redux';
 import { addTour } from '../../../Redux/Tour Data/action';
 
-export const SearchBar =() =>{
+export const SearchBar =({setSortByCountry}) =>{
 
   const [search,setSearch] = useState("")
   // console.log(search);
@@ -14,7 +14,8 @@ export const SearchBar =() =>{
     console.log(search);
     const render = 1; 
     const sortBy = "";
-    dispatch(addTour(render, sortBy, search));
+    // dispatch(addTour(render, sortBy, search));
+    setSortByCountry(search);
 }
 
 
