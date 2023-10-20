@@ -17,11 +17,18 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import style from "./signup.module.css";
 import Navbar from "../../Components/navbar";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { USER_LOGIN_SUCCESS } from "../../Redux/User Data/action";
-
+import { useDispatch, useSelector } from "react-redux";
+import { TwinSpin } from "react-cssfx-loading";
+import {
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_NOT_LOGIN,
+} from "../../Redux/User Data/action";
+import "../../index.css";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
+import LoginAlert from "../../Components/loginAlert";
+import { useDisclosure, useToast } from "@chakra-ui/react";
 let initialSignupObj = {
   userName: "",
   email: "",
@@ -33,19 +40,33 @@ let initialLoginObj = {
 };
 
 export const SignUp = () => {
+  const [alert, setAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState(null);
+  const [disabled, setDisabled] = useState(false);
   const [justifyActive, setJustifyActive] = useState("tab1");
   const [signupObj, setSignupObj] = useState(initialSignupObj);
   const [loginObj, setLoginObj] = useState(initialLoginObj);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const toast = useToast();
+  const toastFuntion = () => {
+    toast({
+      title: "Account created.",
+      description: "We've created your account for you.",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
+  };
+  
   const handleJustifyClick = (value) => {
     if (value === justifyActive) {
       return;
     }
-
     setJustifyActive(value);
   };
+
+  const { isLoading } = useSelector((store) => store.userReducer);
 
   const handleSignupInputChange = (e) => {
     const { value, name } = e.target;
@@ -56,24 +77,49 @@ export const SignUp = () => {
     setLoginObj({ ...loginObj, [name]: value });
   };
   const onSignup = async () => {
+    dispatch({ type: USER_LOGIN_REQUEST });
+    setAlert(false);
     const response = await axios.post(
       `${process.env.REACT_APP_BASE_URL}/travelious_user/signup`,
       signupObj
     );
+    if (response.data.message == "User Is Already Registered") {
+      dispatch({ type: USER_NOT_LOGIN });
+      setAlert(true);
+      setAlertMessage("User Is Already Registered");
+      return;
+    }
+    toastFuntion()
+    dispatch({ type: USER_NOT_LOGIN });
     console.log(response.data);
     handleJustifyClick("tab1");
   };
+
   const onLogin = async () => {
+    dispatch({ type: USER_LOGIN_REQUEST });
+    setAlert(false);
+
     const response = await axios.post(
       `${process.env.REACT_APP_BASE_URL}/travelious_user/login`,
       loginObj
     );
     console.log(response.data);
     if (response.data.message == "Entered Wrong Credentials") {
-      return alert("Entered Wrong Credentials");
+      dispatch({ type: USER_NOT_LOGIN });
+      setAlert(true);
+      // return alert("Entered Wrong Credentials");
+      setAlertMessage("Entered Wrong Credentials");
+      return;
     } else if (response.data.message == "user not found") {
-      return alert("user not found");
+      dispatch({ type: USER_NOT_LOGIN });
+      setAlert(true);
+      setAlertMessage("User not Found");
+
+      // return alert("user not found");
+      return;
     }
+    setAlert(false);
+
     localStorage.setItem("traveliousUserToken", response.data.userToken);
     dispatch({ type: USER_LOGIN_SUCCESS, payload: response.data });
 
@@ -109,9 +155,7 @@ export const SignUp = () => {
 
           <MDBTabsContent>
             <MDBTabsPane show={justifyActive === "tab1"}>
-              <div className="text-center mb-3">
-               
-              </div>
+              <div className="text-center mb-3"></div>
 
               <MDBInput
                 wrapperClass="mb-4"
@@ -146,9 +190,7 @@ export const SignUp = () => {
             </MDBTabsPane>
 
             <MDBTabsPane show={justifyActive === "tab2"}>
-              <div className="text-center mb-3">
-              
-              </div>
+              <div className="text-center mb-3"></div>
 
               <MDBInput
                 wrapperClass="mb-4"
@@ -191,6 +233,14 @@ export const SignUp = () => {
           </MDBTabsContent>
         </MDBContainer>
       </div>
+      {isLoading ? (
+        <div className="loading_center">
+          <TwinSpin />
+        </div>
+      ) : (
+        ""
+      )}
+      {alert ? <LoginAlert message={alertMessage} /> : ""}
     </>
   );
 };

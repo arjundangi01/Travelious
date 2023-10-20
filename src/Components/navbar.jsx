@@ -5,6 +5,7 @@ import { LuMenuSquare } from "react-icons/lu";
 import logoImg from "../Images/LOGO.PNG";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Spinner } from '@chakra-ui/react'
 import {
   USER_LOGOUT,
   
@@ -16,7 +17,7 @@ import { nameUserAction } from "../Redux/name/action";
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const { isAuthenticated, userTitle, email } = useSelector(
+  const { isAuthenticated, userTitle, email ,isLoading} = useSelector(
     (store) => store.userReducer
   );
   
@@ -89,8 +90,8 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-
-          <form className=" gap-5 d-lg-flex d-sm-block me-5 " role="search">
+          {
+            isLoading ? (<Spinner/>) :(<form className=" gap-5 d-lg-flex d-sm-block me-5 " role="search">
             {isAuthenticated && (
               <ul className="navbar-nav me-5 mb-2 mb-lg-0">
                 <li className="nav-item dropdown">
@@ -149,7 +150,9 @@ const Navbar = () => {
                 </button>
               </Link>
             )}
-          </form>
+          </form>)
+           }
+          
         </div>
       </div>
     </nav>

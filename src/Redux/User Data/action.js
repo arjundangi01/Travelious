@@ -1,13 +1,13 @@
 import axios from "axios";
 
 // user Data action
+export const USER_NOT_LOGIN = "USER_NOT_LOGIN";
 export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_LOGIN_ERROR = "USER_LOGIN_ERROR";
 export const USER_SIGNUP = "USER_LOGIN_ERROR";
 export const USER_LOGOUT = "USER_LOGOUT";
 export const GET_USER = "GET_USER";
-
 
 // export const getUserAction =  ({ email, name, nickname, picture, sub }) =>
 //   async (dispatch) => {
@@ -42,23 +42,25 @@ export const GET_USER = "GET_USER";
 //       console.log("error", error);
 //     }
 //   };
-export const updateBookingStatusAction =({ index, obj },refundAmount) =>  async (dispatch) => {
-  try {
-    var cancelDate = new Date().toLocaleDateString();
-    const newObj = { ...obj, status: false ,refundAmount,cancelDate}
-    let userToken = localStorage.getItem("traveliousUserToken");
-    const header = {
-      Authorization: `bearer ${userToken}`,
-    };
-    const response = await axios.put(
-      `${process.env.REACT_APP_BASE_URL}/travelious_tour`,
-      newObj,
-      {
-        headers: header,
-      }
-    );
-    console.log(response)
-    dispatch(getUserDetailAction())
+export const updateBookingStatusAction =
+  ({ index, obj }, refundAmount) =>
+  async (dispatch) => {
+    try {
+      var cancelDate = new Date().toLocaleDateString();
+      const newObj = { ...obj, status: false, refundAmount, cancelDate };
+      let userToken = localStorage.getItem("traveliousUserToken");
+      const header = {
+        Authorization: `bearer ${userToken}`,
+      };
+      const response = await axios.put(
+        `${process.env.REACT_APP_BASE_URL}/travelious_tour`,
+        newObj,
+        {
+          headers: header,
+        }
+      );
+      console.log(response);
+      dispatch(getUserDetailAction());
     } catch (error) {}
   };
 
@@ -100,6 +102,7 @@ export const userLogoutAction = () => async (dispatch) => {
 };
 
 export const getUserDetailAction = () => async (dispatch) => {
+  dispatch({ type: USER_LOGIN_REQUEST });
   try {
     let userToken = localStorage.getItem("traveliousUserToken");
     if (userToken) {
@@ -114,6 +117,10 @@ export const getUserDetailAction = () => async (dispatch) => {
       );
       dispatch({ type: GET_USER, payload: response.data });
       console.log(response);
+    } else {
+      dispatch({ type: USER_NOT_LOGIN });
     }
-  } catch (error) {}
+  } catch (error) {
+    dispatch({ type: USER_LOGIN_ERROR });
+  }
 };

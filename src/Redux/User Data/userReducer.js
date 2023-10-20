@@ -4,6 +4,7 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGOUT,
+  USER_NOT_LOGIN,
 } from "./action";
 
 const initialState = {
@@ -30,6 +31,19 @@ const userReducer = (state = initialState, { type, payload }) => {
       };
     case USER_LOGOUT:
       return initialState
+    case USER_NOT_LOGIN:
+      return {...state,isLoading:false}
+    case USER_LOGIN_ERROR:
+       return {
+        ...state,
+        userTitle: "",
+        UserData: '',
+        email:'',
+        isAuthenticated: '',
+        bookingHistory: '',
+         isLoading: false,
+         isError:true
+      };
    
     case GET_USER: {
       return {
@@ -38,7 +52,8 @@ const userReducer = (state = initialState, { type, payload }) => {
         UserData: payload.userData,
         email: payload.userData.email,
         isAuthenticated: true,
-        bookingHistory:payload.bookingHistory
+        bookingHistory: payload.bookingHistory,
+        isLoading:false
       };
     }
     default:
