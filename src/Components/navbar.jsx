@@ -7,9 +7,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   USER_LOGOUT,
-  getUserAction,
+  
   getUserDetailAction,
-  newUserSignupAction,
+  
   userLogoutAction,
 } from "../Redux/User Data/action";
 import { nameUserAction } from "../Redux/name/action";
@@ -92,7 +92,7 @@ const Navbar = () => {
 
           <form className=" gap-5 d-lg-flex d-sm-block me-5 " role="search">
             {isAuthenticated && (
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul className="navbar-nav me-5 mb-2 mb-lg-0">
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link text-light dropdown-toggle"
@@ -103,7 +103,7 @@ const Navbar = () => {
                   >
                     {isAuthenticated ? userTitle : ""}
                   </a>
-                  <ul className="dropdown-menu">
+                  <ul className="dropdown-menu  ">
                     <li>
                       <Link to={`/profile`} className="dropdown-item" href="#">
                         Profile
@@ -156,4 +156,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);

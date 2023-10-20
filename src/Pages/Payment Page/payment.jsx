@@ -55,6 +55,8 @@ const Payment = () => {
 
   useEffect(() => {
     dispatch(singleTour(id));
+    window.scrollTo(0, 0); 
+
   }, []);
 
   // const hotelData={

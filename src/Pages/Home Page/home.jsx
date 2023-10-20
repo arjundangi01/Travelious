@@ -9,20 +9,26 @@ import Section6 from "./section6";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../Components/footer";
 import { getUserDetailAction } from "../../Redux/User Data/action";
+import { tourDetailReducer } from "../../Redux/Tour Detail/tourDetailReducer";
+import { addTour } from "../../Redux/Tour Data/action";
 const Home = () => {
-  const { homePage } = useSelector((store) => store.tourDetailReducer);
-  console.log(homePage);
+  const { tours } = useSelector((store) => store.tourReducer);
+  console.log(tours);
   const dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(getUserDetailAction());
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+    // tourDetailReducer({})
+    // dispatch({type:'GET_DATA_FOR'})
+    dispatch(addTour(1))
+
+  }, []);
   return (
     <>
       <Navbar />
       <Section1 />
       <div style={{ backgroundColor: "#f9f9f9" }}>
         <div className={style.parent}>
-          <Section2 data={homePage} />
+          <Section2 data={tours} />
           <Section4 />
           <Section5 />
           <Section6 />

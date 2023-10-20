@@ -70,6 +70,31 @@
 }
 @media (min-width: 900px) and (max-width: 1200px) {
   .bottom {
+    
+    gap: 1.2rem;
+  }
+  .top h1 {
+    font-size: 2.6rem;
+  }
+  .card h2 {
+    font-size: 1.5rem;
+  }
+  .card h1 {
+    font-size: 1.5rem;
+  }
+  .card {
+    padding: 1rem 0.5rem;
+  }
+  .card button {
+  
+    padding: 0.3rem 1rem;   
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+@media (min-width: 455px) and (max-width: 900px) {
+  .bottom {
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
   }
   .top h1 {

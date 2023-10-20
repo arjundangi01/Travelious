@@ -82,7 +82,7 @@
 
 /* media queries */
 
-@media (max-width : 500px){
+@media (max-width : 600px){
     .singleCard{
         grid-template-columns: repeat(1,1fr);
     }
@@ -110,14 +110,7 @@
     
 }
 
-@media only screen and (max-width : 840px) and (min-width: 500px){
-    .singleCard{
-        grid-template-columns: repeat(2,1fr);
-    }
-    .filterPart{
-        display: none;
-    }
-}
+
 
 
 .isLoading{
@@ -327,7 +320,21 @@
     border: 1px solid black;
 }
 
- 
+@media only screen and (max-width : 1250px) and (min-width: 800px){
+    .singleCard{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .filterPart{
+        display: none;
+    }
+}
 
-  
+@media only screen and (max-width : 840px) and (min-width: 600px){
+    .singleCard{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .filterPart{
+        display: none;
+    }
+}
 

@@ -26,8 +26,11 @@ const PopUp = ({ UserData, setPopup, selected, setUpdate }) => {
           </div>
           <div className={style.confirm_div}>
               <h5>Still want to continue</h5>
+              <div>
               <button onClick={() => { setUpdate(prev => !prev); dispatch(updateBookingStatusAction(selected,refundAmount)); setPopup(false); }} className={style.yes_btn}>Yes</button>
               <button onClick={()=>setPopup(false)} className={style.no_btn}>No</button>
+                  
+              </div>
           </div>
     </div>
   )

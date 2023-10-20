@@ -51,8 +51,22 @@
     width: 90%;
   }
 }
+@media (min-width: 555px) and (max-width: 900px) {
+  .left {
+    width: 50%;
+  }
+  .left h1{
+    font-size: 3rem;
+  }
+  .left_middle {
+    font-size: 1.1rem;
+  }
+  .left_last img {
+    width: 90%;
+  }
+}
 
-@media (max-width: 455px) {
+@media (max-width: 555px) {
   .container {
     flex-direction: column;
   }

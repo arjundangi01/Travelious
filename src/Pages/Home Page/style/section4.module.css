@@ -87,10 +87,36 @@
     width: 60%;
     margin: auto;
   }
+
+}
+@media (min-width: 555px) and (max-width: 900px) {
+  .top {
+    width: 85%;
+  }
+  .top h1 {
+    font-size: 3rem;
+  }
+  .top_middle {
+    /* width: 400px; */
+    width: 60%;
+    margin: auto;
+  }
+  .right h1 {
+    font-size: 2.8rem;
+  }
+  .right {
+    width: 50%;
+  }
+  .right p {
+    font-size: 1.1rem;
+  }
+  .left img {
+    width: 85%;
+  }
 }
 /* ------------- */
 
-@media (max-width: 455px) {
+@media (max-width: 555px) {
   .parent1 {
     flex-direction: column;
   }

@@ -1,43 +1,64 @@
-.container{
+.container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* padding: 1rem; */
+}
+/* .container{
     position: fixed;
      bottom: 40%;
      right: 40%;
     background: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    /* padding: 1rem; */
+     padding: 1rem; 
     
+} */
+.heading {
+  color: #fb7617;
+  border-bottom: 2px solid #fb7617;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 2rem;
 }
-.heading{
-    color: #fb7617 ;
-    border-bottom: 2px solid #fb7617;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 2rem;
+.refund_div {
+  color: green;
 }
-.refund_div{
-    color: green;
+.confirm_div {
+  background-color: aliceblue;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
 }
-.confirm_div{
-    background-color: aliceblue;
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
-    align-items: center;
+.confirm_div div{
+  display: flex;
+  gap: 0rem 1rem;
+  /* justify-content: space-between; */
 }
-.yes_btn{
-    background-color: #fb7617;
-    border: none;
-    border-radius: 10px;
-    padding: 0.5rem 1rem;
-    color: white;
-    font-weight: 600;
+.yes_btn {
+  background-color: #fb7617;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 600;
 }
-.no_btn{
-    background-color: #fb2a17;
-    border: none;
-    border-radius: 10px;
-    padding: 0.5rem 1rem;
-    color: white;
-    font-weight: 600;
+.no_btn {
+  background-color: #fb2a17;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+    .confirm_div {
+        border: 1px solid #000;
+        flex-direction: column;
+      }
 }

@@ -36,7 +36,9 @@ const Tour = () => {
   // console.log(loading);
 
   useEffect(() => {
-    dispatch(addTour(render,sortBy,sortbycountry))
+    dispatch(addTour(render, sortBy, sortbycountry))
+    window.scrollTo(0, 0); 
+    
   },[render,sortBy,sortbycountry])
 
   function handleNext(e) {

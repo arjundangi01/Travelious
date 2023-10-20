@@ -61,8 +61,26 @@
     font-size: 1.2rem;
   }
 }
+@media (min-width: 555px) and (max-width: 1100px) {
+  .container {
+    /* width:530px; */
+    width: 50%;
+  }
+  .container h1 {
+    font-size: 3rem;
+  }
+  .container p {
+    font-size: 1.1rem;
+    
+  }
+  .container button {
+    padding: 0.5rem 1rem;
 
-@media (max-width: 455px) {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 555px) {
   .container {
     /* width:530px; */
     width: 80%;

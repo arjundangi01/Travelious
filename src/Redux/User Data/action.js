@@ -8,40 +8,40 @@ export const USER_SIGNUP = "USER_LOGIN_ERROR";
 export const USER_LOGOUT = "USER_LOGOUT";
 export const GET_USER = "GET_USER";
 
-export const getUserAction =
-  ({ email, name, nickname, picture, sub }) =>
-  async (dispatch) => {
-    // console.log("gg")
-    try {
-      const response = await axios.get(
-        `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser?token=${email}`
-      );
-      console.log("res", response.data[0]);
-      if (!response.data[0] || response.data[0] == "undefined") {
-        const newObj = {
-          userName: nickname,
-          token: email,
-          data: { email, nickname, picture },
-          bookingHistory: [],
-        };
-        dispatch({
-          type: USER_LOGIN_SUCCESS,
-          payload: newObj,
-        });
-        const response = await axios.post(
-          `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser/`,
-          newObj
-        );
-      } else {
-        dispatch({
-          type: USER_LOGIN_SUCCESS,
-          payload: response.data[0],
-        });
-      }
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+
+// export const getUserAction =  ({ email, name, nickname, picture, sub }) =>
+//   async (dispatch) => {
+//     // console.log("gg")
+//     try {
+//       const response = await axios.get(
+//         `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser?token=${email}`
+//       );
+//       console.log("res", response.data[0]);
+//       if (!response.data[0] || response.data[0] == "undefined") {
+//         const newObj = {
+//           userName: nickname,
+//           token: email,
+//           data: { email, nickname, picture },
+//           bookingHistory: [],
+//         };
+//         dispatch({
+//           type: USER_LOGIN_SUCCESS,
+//           payload: newObj,
+//         });
+//         const response = await axios.post(
+//           `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser/`,
+//           newObj
+//         );
+//       } else {
+//         dispatch({
+//           type: USER_LOGIN_SUCCESS,
+//           payload: response.data[0],
+//         });
+//       }
+//     } catch (error) {
+//       console.log("error", error);
+//     }
+//   };
 export const updateBookingStatusAction =({ index, obj },refundAmount) =>  async (dispatch) => {
   try {
     var cancelDate = new Date().toLocaleDateString();
@@ -82,19 +82,19 @@ export const newBookingAction = (newObj) => async (dispatch) => {
     console.log(error);
   }
 };
-export const newUserSignupAction = (newObj) => async (dispatch) => {
-  dispatch({
-    type: USER_LOGIN_SUCCESS,
-    payload: newObj,
-  });
-  console.log("called this");
-  try {
-    const response = await axios.post(
-      `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser/`,
-      newObj
-    );
-  } catch (error) {}
-};
+// export const newUserSignupAction = (newObj) => async (dispatch) => {
+//   dispatch({
+//     type: USER_LOGIN_SUCCESS,
+//     payload: newObj,
+//   });
+//   console.log("called this");
+//   try {
+//     const response = await axios.post(
+//       `https://dull-puce-crocodile-wear.cyclic.app/traveliousUser/`,
+//       newObj
+//     );
+//   } catch (error) {}
+// };
 export const userLogoutAction = () => async (dispatch) => {
   dispatch({ type: USER_LOGOUT });
 };

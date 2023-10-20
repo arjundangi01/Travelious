@@ -2,6 +2,7 @@ import React from "react";
 import style from "./style/section2.module.css";
 import TourCard from "./tourCard";
 const Section2 = ({ data }) => {
+  const dataSLiced = data.slice(0, 3);
   return (
     <div className={style.parent}>
       <div className={style.container}>
@@ -15,8 +16,8 @@ const Section2 = ({ data }) => {
           <div></div>
         </div>
         <div className={style.bottom}>
-          {data.map((ele) => (
-              <TourCard key={ele.id} {...ele}  />
+          {dataSLiced?.map((ele) => (
+              <TourCard key={ele._id} {...ele}  />
           ))}
         </div>
       </div>
