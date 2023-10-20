@@ -16,6 +16,7 @@
     "engine": "^1.0.0",
     "framer-motion": "^10.16.4",
     "mdb-react-ui-kit": "^6.3.0",
+    "passport-google-oauth20": "^2.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",

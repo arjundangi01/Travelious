@@ -20,6 +20,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { USER_LOGIN_SUCCESS } from "../../Redux/User Data/action";
 
+import { FcGoogle } from "react-icons/fc";
+import { AiFillGithub } from "react-icons/ai";
 let initialSignupObj = {
   userName: "",
   email: "",
@@ -46,34 +48,37 @@ export const SignUp = () => {
   };
 
   const handleSignupInputChange = (e) => {
-    const { value, name } = e.target
-    setSignupObj({...signupObj,[name]:value})
-    
+    const { value, name } = e.target;
+    setSignupObj({ ...signupObj, [name]: value });
   };
   const handleLoginInputChange = (e) => {
-    const { value, name } = e.target
-    setLoginObj({...loginObj,[name]:value})
-
+    const { value, name } = e.target;
+    setLoginObj({ ...loginObj, [name]: value });
   };
-  const onSignup = async() => {
-    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/travelious_user/signup`,signupObj);
-    console.log(response.data)
-    handleJustifyClick("tab1")
-  }
+  const onSignup = async () => {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/travelious_user/signup`,
+      signupObj
+    );
+    console.log(response.data);
+    handleJustifyClick("tab1");
+  };
   const onLogin = async () => {
-    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/travelious_user/login`,loginObj);
-    console.log(response.data)
-    if (response.data.message == 'Entered Wrong Credentials') {
-      return alert('Entered Wrong Credentials')
-    } else if(response.data.message=='user not found')  {
-      return alert('user not found')
+    const response = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/travelious_user/login`,
+      loginObj
+    );
+    console.log(response.data);
+    if (response.data.message == "Entered Wrong Credentials") {
+      return alert("Entered Wrong Credentials");
+    } else if (response.data.message == "user not found") {
+      return alert("user not found");
     }
-    localStorage.setItem('traveliousUserToken', response.data.userToken)
-    dispatch({type:USER_LOGIN_SUCCESS,payload:response.data})
-    
-    navigate('/')
+    localStorage.setItem("traveliousUserToken", response.data.userToken);
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: response.data });
 
-  }
+    navigate("/");
+  };
   return (
     <>
       <Navbar />
@@ -105,50 +110,7 @@ export const SignUp = () => {
           <MDBTabsContent>
             <MDBTabsPane show={justifyActive === "tab1"}>
               <div className="text-center mb-3">
-                <p>Sign in with:</p>
-
-                <div
-                  className="d-flex justify-content-between mx-auto"
-                  style={{ width: "40%" }}
-                >
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="m-1"
-                    style={{ color: "#1266f1" }}
-                  >
-                    <MDBIcon fab icon="facebook-f" size="sm" />
-                  </MDBBtn>
-
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="m-1"
-                    style={{ color: "#1266f1" }}
-                  >
-                    <MDBIcon fab icon="twitter" size="sm" />
-                  </MDBBtn>
-
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="m-1"
-                    style={{ color: "#1266f1" }}
-                  >
-                    <MDBIcon fab icon="google" size="sm" />
-                  </MDBBtn>
-
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="m-1"
-                    style={{ color: "#1266f1" }}
-                  >
-                    <MDBIcon fab icon="github" size="sm" />
-                  </MDBBtn>
-                </div>
-
-                <p className="text-center mt-3">or:</p>
+               
               </div>
 
               <MDBInput
@@ -158,7 +120,6 @@ export const SignUp = () => {
                 type="email"
                 name="email"
                 onChange={handleLoginInputChange}
-
               />
               <MDBInput
                 wrapperClass="mb-4"
@@ -167,7 +128,6 @@ export const SignUp = () => {
                 type="text"
                 name="password"
                 onChange={handleLoginInputChange}
-                
               />
 
               <div className="d-flex justify-content-between mx-4 mb-4">
@@ -180,55 +140,14 @@ export const SignUp = () => {
                 <a href="!#">Forgot password?</a>
               </div>
 
-              <MDBBtn onClick={onLogin} className="mb-4 w-100 bg-warning">Sign in</MDBBtn>
+              <MDBBtn onClick={onLogin} className="mb-4 w-100 bg-warning">
+                Sign in
+              </MDBBtn>
             </MDBTabsPane>
 
             <MDBTabsPane show={justifyActive === "tab2"}>
               <div className="text-center mb-3">
-                <p>Sign un with:</p>
-
-                <div
-                  className="d-flex justify-content-between mx-auto"
-                  style={{ width: "40%" }}
-                >
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="m-1"
-                    style={{ color: "#1266f1" }}
-                  >
-                    <MDBIcon fab icon="facebook-f" size="sm" />
-                  </MDBBtn>
-
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="m-1"
-                    style={{ color: "#1266f1" }}
-                  >
-                    <MDBIcon fab icon="twitter" size="sm" />
-                  </MDBBtn>
-
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="m-1"
-                    style={{ color: "#1266f1" }}
-                  >
-                    <MDBIcon fab icon="google" size="sm" />
-                  </MDBBtn>
-
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="m-1"
-                    style={{ color: "#1266f1" }}
-                  >
-                    <MDBIcon fab icon="github" size="sm" />
-                  </MDBBtn>
-                </div>
-
-                <p className="text-center mt-3">or:</p>
+              
               </div>
 
               <MDBInput
@@ -238,7 +157,6 @@ export const SignUp = () => {
                 id="form1"
                 type="text"
                 onChange={handleSignupInputChange}
-
               />
 
               <MDBInput
@@ -248,7 +166,6 @@ export const SignUp = () => {
                 id="form1"
                 type="email"
                 onChange={handleSignupInputChange}
-
               />
               <MDBInput
                 wrapperClass="mb-4"
@@ -267,7 +184,9 @@ export const SignUp = () => {
                 />
               </div>
 
-              <MDBBtn onClick={onSignup} className="mb-4 w-100 bg-warning">Sign up</MDBBtn>
+              <MDBBtn onClick={onSignup} className="mb-4 w-100 bg-warning">
+                Sign up
+              </MDBBtn>
             </MDBTabsPane>
           </MDBTabsContent>
         </MDBContainer>
