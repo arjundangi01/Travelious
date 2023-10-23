@@ -21,7 +21,9 @@ export const addTour = (render, sortOrder , country ) => async (dispatch) => {
       dispatch({ type: ADD_TOUR_REQUEST });
       const res = await axios.get(apiUrl);
       const data = res.data;
-      dispatch({ type: ADD_TOUR_SUCCESS, payload: data });
+      console.log('res',data)
+
+      dispatch({ type: ADD_TOUR_SUCCESS, payload: {tours:data.tourData,totalPage:data.totalPage} });
     } catch (error) {
       console.log("fetching error!");
       dispatch({ type: ADD_TOUR_FAILURE });

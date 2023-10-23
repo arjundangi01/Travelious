@@ -2,6 +2,7 @@ import React from 'react'
 import styles from "./thankyou.module.css"
 // import Navigate from "react-router-dom"
 import success from "./success.gif"
+import Navbar from '../../Components/navbar'
 const PaymentConfirm = () => {
 
   // setTimeout(()=>{
@@ -9,6 +10,7 @@ const PaymentConfirm = () => {
   // },3000)
   return (
     <div>
+      <Navbar/>
        <>
   <div id={styles.imgcont}>
     {/* <img src="https://rb.gy/ueupm" alt="success" /> */}

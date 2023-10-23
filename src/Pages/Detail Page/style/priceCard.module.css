@@ -9,6 +9,7 @@
 }
 .price_first_div {
   padding: 0.7rem 1rem;
+  text-align: start;
   /* border-radius: 20px 20px 0px 0px; */
 
   background: linear-gradient(#8aafda85, #d7f1ff);
@@ -18,6 +19,7 @@
 }
 .price_first_div h2 {
   font-weight: bolder;
+  text-align: start;
   /* color: black; */
 }
 .price_sec_div {

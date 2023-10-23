@@ -55,7 +55,7 @@
     100% {transform: translateX(-100%);}
   }
   .skeleton {
-    background-color: #aec2a7;
+    background-color: #dcdcdc;
     overflow: hidden;
     border-radius: 5px;
   }

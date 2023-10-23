@@ -16,16 +16,15 @@ const Profile = () => {
   const initialObj = useSelector((store) => store.userReducer);
   const dispatch = useDispatch();
   const { UserData, bookingHistory, isLoading } = initialObj;
-
+  useEffect(() => {
+    
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
-      <Navbar />
-      {isLoading ? (
-        <Stack  direction="row" spacing={4}>
-          <Spinner size="xl" mt="5rem" ml="50%"  />
-        </Stack>
-      ) : (
+      <Navbar />           
+     
         <div className={style.parent}>
           <div className={style.profile_section}>
             <div className={style.profile_card_div}>
@@ -42,7 +41,8 @@ const Profile = () => {
             <div className={style.heading_div}>
               <h3>Booking History</h3>
             </div>
-            {isLoading ? (
+          {isLoading ? (
+            <>
               <div>
                 <div className={style.info}>
                   <div className={style.skeleton}></div>
@@ -56,6 +56,33 @@ const Profile = () => {
                   ></div>
                 </div>
               </div>
+              <div>
+                <div className={style.info}>
+                  <div className={style.skeleton}></div>
+                  <div
+                    className={style.skeleton}
+                    style={{ width: "100%" }}
+                  ></div>
+                  <div
+                    className={style.skeleton}
+                    style={{ width: "50%" }}
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div className={style.info}>
+                  <div className={style.skeleton}></div>
+                  <div
+                    className={style.skeleton}
+                    style={{ width: "100%" }}
+                  ></div>
+                  <div
+                    className={style.skeleton}
+                    style={{ width: "50%" }}
+                  ></div>
+                </div>
+              </div>
+              </>
             ) : !UserData || bookingHistory.length == 0 ? (
               <div className={style.empty_div}>
                 <h1>No Booking Yet !</h1>
@@ -83,7 +110,7 @@ const Profile = () => {
             />
           )}
         </div>
-      )}
+    
     </>
   );
 };

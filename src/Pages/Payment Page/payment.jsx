@@ -197,9 +197,11 @@ const Payment = () => {
     e.preventDefault();
 
     if (validateInputs()) {
-      // if (!isAuthenticated) {
-      //   loginWithRedirect();
-      // }
+      if (!isAuthenticated) {
+        navigate('/signup')
+        return
+
+      }
       displayRazorpay(payable);
     } else {
       alert("Please fill in all required fields.");
