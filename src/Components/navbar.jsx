@@ -17,7 +17,7 @@ import { nameUserAction } from "../Redux/name/action";
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const { isAuthenticated, userTitle, email ,isLoading} = useSelector(
+  const { isAuthenticated, userTitle, email ,isLoading,isProfileLoading} = useSelector(
     (store) => store.userReducer
   );
   
@@ -91,7 +91,7 @@ const Navbar = () => {
             </li>
           </ul>
           {
-            isLoading ? (<Spinner/>) :(<form className=" gap-5 d-lg-flex d-sm-block me-5 " role="search">
+            isProfileLoading ? (<Spinner/>) :(<form className=" gap-5 d-lg-flex d-sm-block me-5 " role="search">
             {isAuthenticated && (
               <ul className="navbar-nav me-5 mb-2 mb-lg-0">
                 <li className="nav-item dropdown">

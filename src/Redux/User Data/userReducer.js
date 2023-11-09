@@ -10,6 +10,9 @@ import {
 const initialState = {
   isAuthenticated: false,
   isLoading: false,
+  isBookingLoading: false,
+  isBookingUpdateLoading: false,
+  isProfileLoading: false,
   isError: "",
   token: "",
   userTitle: "",
@@ -30,21 +33,21 @@ const userReducer = (state = initialState, { type, payload }) => {
         token: payload.userToken,
       };
     case USER_LOGOUT:
-      return initialState
+      return initialState;
     case USER_NOT_LOGIN:
-      return {...state,isLoading:false}
+      return { ...state, isLoading: false };
     case USER_LOGIN_ERROR:
-       return {
+      return {
         ...state,
         userTitle: "",
-        UserData: '',
-        email:'',
-        isAuthenticated: '',
-        bookingHistory: '',
-         isLoading: false,
-         isError:true
+        UserData: "",
+        email: "",
+        isAuthenticated: "",
+        bookingHistory: "",
+        isLoading: false,
+        isError: true,
       };
-   
+
     case GET_USER: {
       return {
         ...state,
@@ -53,7 +56,46 @@ const userReducer = (state = initialState, { type, payload }) => {
         email: payload.userData.email,
         isAuthenticated: true,
         bookingHistory: payload.bookingHistory,
-        isLoading:false
+        isLoading: false,
+        isBookingLoading: false,
+        isBookingUpdateLoading: false,
+        isProfileLoading: false,
+      };
+    }
+    case "isLoadingTrue": {
+      return {
+        ...state,
+        isBookingLoading: true,
+      };
+    }
+    case "isLoadingFalse": {
+      return {
+        ...state,
+        isBookingLoading: false,
+      };
+    }
+    case "isBookingLoadingTrue": {
+      return {
+        ...state,
+        isBookingUpdateLoading: true,
+      };
+    }
+    case "isBookingLoadingFalse": {
+      return {
+        ...state,
+        isBookingUpdateLoading: false,
+      };
+    }
+    case "isProfileLoadingTrue": {
+      return {
+        ...state,
+        isProfileLoading: true,
+      };
+    }
+    case "isProfileLoadingFalse": {
+      return {
+        ...state,
+        isProfileLoading: false,
       };
     }
     default:

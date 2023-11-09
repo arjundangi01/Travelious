@@ -17,8 +17,8 @@ const Home = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     window.scrollTo(0, 0); 
-    // tourDetailReducer({})
-    // dispatch({type:'GET_DATA_FOR'})
+    dispatch({ type: "isProfileLoadingTrue" });
+
     dispatch(addTour(1))
 
   }, []);
