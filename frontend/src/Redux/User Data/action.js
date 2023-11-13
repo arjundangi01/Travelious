@@ -57,6 +57,7 @@ export const newBookingAction = (newObj) => async (dispatch) => {
 
 export const userLogoutAction = () => async (dispatch) => {
   dispatch({ type: USER_LOGOUT });
+  dispatch({ type: "isProfileLoadingFalse" });
 };
 
 export const getUserDetailAction = () => async (dispatch) => {
