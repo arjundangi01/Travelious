@@ -157,16 +157,6 @@ const Payment = () => {
       handler: function (response) {
         // alert(response.razorpay_payment_id)
         var bookingDate = new Date().toLocaleDateString();
-
-        // const newObj = {
-        //   userName: initialState.userName,
-        //   token:initialState.token,
-        //   data:initialState.data,
-        //   bookingHistory: [
-        //     ...initialState.bookingHistory,
-        //     { ...hotelData, status: true, bookingDate, cost: payable },
-        //   ],
-        // };
         const newObj = {...hotelData, status: true, bookingDate, cost: payable};
         console.log("new obj after payment", newObj);
         delete newObj._id

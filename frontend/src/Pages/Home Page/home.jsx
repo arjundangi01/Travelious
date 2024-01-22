@@ -14,13 +14,15 @@ import { addTour } from "../../Redux/Tour Data/action";
 const Home = () => {
   const { tours } = useSelector((store) => store.tourReducer);
   console.log(tours);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    window.scrollTo(0, 0); 
-    dispatch({ type: "isProfileLoadingTrue" });
+    window.scrollTo(0, 0);
+    // let userToken = localStorage.getItem("traveliousUserToken");
+    // if (userToken  ) {
+    //   dispatch({ type: "isProfileLoadingTrue" });
+    // }
 
-    dispatch(addTour(1))
-
+    dispatch(addTour(1));
   }, []);
   return (
     <>
@@ -32,7 +34,7 @@ const Home = () => {
           <Section4 />
           <Section5 />
           <Section6 />
-          <Footer/>
+          <Footer />
         </div>
       </div>
     </>

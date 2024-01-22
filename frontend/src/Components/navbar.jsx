@@ -25,6 +25,10 @@ const Navbar = () => {
  
   useEffect(() => {
     dispatch(getUserDetailAction());
+    let userToken = localStorage.getItem("traveliousUserToken");
+    if (userToken && !isAuthenticated ) {
+      dispatch({ type: "isProfileLoadingTrue" });
+    }
   }, []);
 
   const onLogout = () => {

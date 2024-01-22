@@ -61,10 +61,14 @@ export const userLogoutAction = () => async (dispatch) => {
 };
 
 export const getUserDetailAction = () => async (dispatch) => {
-  dispatch({ type: USER_LOGIN_REQUEST });
+  // dispatch({ type: USER_LOGIN_REQUEST });
+  // dispatch({ type: "isProfileLoadingTrue" });
+
   try {
     let userToken = localStorage.getItem("traveliousUserToken");
     if (userToken) {
+      // dispatch({ type: "isProfileLoadingTrue" });
+
       const header = {
         Authorization: `bearer ${userToken}`,
       };
@@ -79,8 +83,15 @@ export const getUserDetailAction = () => async (dispatch) => {
       dispatch({ type: "isLoadingFalse" });
     } else {
       dispatch({ type: USER_NOT_LOGIN });
+      dispatch({ type: "isProfileLoadingFalse" });
+      dispatch({ type: "isLoadingFalse" });
+
+
     }
   } catch (error) {
     dispatch({ type: USER_LOGIN_ERROR });
+    dispatch({ type: "isProfileLoadingFalse" });
+      dispatch({ type: "isLoadingFalse" });
+
   }
 };
